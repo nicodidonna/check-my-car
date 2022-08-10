@@ -12,4 +12,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  closeMobileNav(){
+    let checkbox = document.getElementById('nav-check') as HTMLInputElement;
+    checkbox.checked = false;
+  }
+
 }

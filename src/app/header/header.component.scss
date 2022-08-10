@@ -42,7 +42,7 @@
     display: none;
   }
   
-  @media screen and(max-width:600px) {
+  @media screen and(max-width:1000px) {
     .nav > .nav-btn {
       display: inline-block;
       position: absolute;
@@ -83,7 +83,8 @@
       height: 0px;
     }
     .nav > #nav-check:checked ~ .nav-links {
-      height: calc(100vh - 50px);
+      z-index: 1;
+      height: calc(100vh - 0px);
       overflow-y: auto;
     }
   }
