@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path:"", redirectTo:"home",pathMatch:"full"},
-  {path:"home", loadChildren: ()=>import("./home/home.module").then(m=>m.HomeModule)},
+  {path:"home", redirectTo:"",pathMatch:"full"},
+  {path:"", loadChildren: ()=>import("./home/home.module").then(m=>m.HomeModule)},
   {path:"parco-auto", loadChildren: ()=>import("./parco-auto/parco-auto.module").then(m=>m.ParcoAutoModule)},
   {path:"revisioni",loadChildren:()=>import("./revisioni/revisioni.module").then(m=>m.RevisioniModule)},
   {path:"tagliandi",loadChildren:()=>import("./tagliandi/tagliandi.module").then(m=>m.TagliandiModule)},
@@ -12,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{scrollPositionRestoration: 'top'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
