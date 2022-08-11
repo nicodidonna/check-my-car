@@ -1,1 +1,27 @@
-<h1 class="text-center" style="margin-top: 15px; margin-bottom:15px">IL TUO PARCO AUTO</h1>
+<div class="container" style="margin-top: 15px; margin-bottom:15px">
+    
+    <h1 class="text-center" >IL TUO PARCO AUTO</h1>
+    
+    
+    <div class="row">
+        
+        <div class="card" *ngFor="let e of arrAuto">
+            <div class="title">{{e.marca.toUpperCase()}} {{e.modello.toUpperCase()}}</div>
+            
+            <div class="icon">
+                <img src="assets/loghi-auto/{{e.marca.toLowerCase()}}.png">
+            </div><!--/icon-->
+            
+            <div class="features">
+                <ul>
+                    <li><b>Numero di Targa:</b> {{e.targa}}</li>
+                    <li><b>Motorizzazione:</b> {{e.cilindrata}} {{e.cavalli}}cv - {{e.alimentazione}}</li>
+                    <li><b>Anno di immatricolazione:</b> {{e.annoImmatricolazione}}</li>
+                </ul>
+            </div><!--/features-->
+        
+        </div><!--/card-->
+    
+    </div>
+
+</div>
