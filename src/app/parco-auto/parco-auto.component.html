@@ -21,28 +21,29 @@
             <h1>Compila il form per aggiungere un'auto</h1>
           </div>
           <div class="details-modal-content">
-            <form>
+            
+            <form [formGroup]="form">
 
               <div class="row">
 
                 <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
               <div class="input-form">
               <label for="marca"><b>Casa Automobilistica</b></label><br>
-              <input type="text" id="marca">
+              <input type="text" id="marca" formControlName="marca">
               </div>
             </div>
 
             <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
               <div class="input-form">
               <label for="modello"><b>Modello</b></label><br>
-              <input type="text" id="modello">
+              <input type="text" id="modello" formControlName="modello">
             </div>
           </div>
 
           <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
               <div class="input-form">
               <label for="targa"><b>Targa</b></label><br>
-              <input type="text" id="targa">
+              <input type="text" id="targa" formControlName="targa">
             </div>
           </div>
 
@@ -52,7 +53,7 @@
             <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
               <div class="input-form">
               <label for="cilindrata"><b>Cilindrata</b></label><br>
-              <input type="number" id="cilindrata">
+              <input type="number" id="cilindrata" formControlName="cilindrata">
             </div>
             </div>
 
@@ -60,7 +61,7 @@
             <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
               <div class="input-form">
               <label for="cavalli"><b>Numero cavalli</b></label><br>
-              <input type="number" id="cavalli">
+              <input type="number" id="cavalli" formControlName="cavalli">
             </div>
             </div>
 
@@ -68,7 +69,7 @@
             <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
               <div class="input-form">
               <label for="alimentazione"><b>Alimentazione</b></label><br>
-              <input type="text" id="alimentazione">
+              <input type="text" id="alimentazione" formControlName="alimentazione">
             </div>
             </div>
 
@@ -79,14 +80,15 @@
             <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
               <div class="input-form">
               <label for="annoImmatricolazione"><b>Anno di Immatricolazione</b></label><br>
-              <input type="number" id="annoImmatricolazione">
+              <input type="number" id="annoImmatricolazione" formControlName="annoImmatricolazione">
             </div>
           </div>
 
           </div>
 
-          <button type="submit">AGGIUNGI AUTO</button>
+          <button type="button" [disabled]="!form.valid">AGGIUNGI AUTO</button>
             </form>
+
           </div>
         </div>
       </details>

@@ -11,6 +11,7 @@ import { TagliandiComponent } from './tagliandi/tagliandi.component';
 import { RevisioniComponent } from './revisioni/revisioni.component';
 import { AssicurazioneBolloComponent } from './assicurazione-bollo/assicurazione-bollo.component';
 import { ManutenzioneStraordinariaComponent } from './manutenzione-straordinaria/manutenzione-straordinaria.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ManutenzioneStraordinariaComponent } from './manutenzione-straordinaria
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

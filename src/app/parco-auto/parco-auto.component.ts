@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Auto } from '../@auto/class/AutoClass';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-parco-auto',
@@ -8,18 +9,21 @@ import { Auto } from '../@auto/class/AutoClass';
 })
 export class ParcoAutoComponent implements OnInit {
 
+  form: FormGroup;
   listaAuto: Array<Auto> = [];
-  auto1 = {
-    marca: "Dacia",
-    modello: "Duster",
-    targa: "FA773ZR",
-    cilindrata: 1.5,
-    cavalli: 115,
-    annoImmatricolazione: 2015,
-    alimentazione: "Diesel"
-  }
+  
 
-  constructor() { }
+  constructor(private fb: FormBuilder) {
+    this.form = fb.group({
+      marca: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
+      modello: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
+      targa: new FormControl("",Validators.compose([Validators.minLength(3), Validators.required])),
+      cilindrata: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
+      cavalli: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
+      alimentazione: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
+      annoImmatricolazione: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required]))
+    });
+   }
 
   ngOnInit(): void {
 
