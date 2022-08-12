@@ -6,7 +6,7 @@
 
     <details>
         <summary>
-          <div class="button" style="margin-top:20px;">
+          <div class="modal-button" style="margin-top:20px;">
             Aggiungi nuova auto 
           </div>
           <div class="details-modal-overlay"></div>
@@ -21,11 +21,72 @@
             <h1>Compila il form per aggiungere un'auto</h1>
           </div>
           <div class="details-modal-content">
-            <p>
-              You can click the X in the corner or click the overlay to close this modal.
-              Something like this could be useful as a nice way to show additional information,
-              but that's about as far as I would take it. It's just a nice way of styling the details element.
-            </p>
+            <form>
+
+              <div class="row">
+
+                <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+              <div class="input-form">
+              <label for="marca"><b>Casa Automobilistica</b></label><br>
+              <input type="text" id="marca">
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+              <div class="input-form">
+              <label for="modello"><b>Modello</b></label><br>
+              <input type="text" id="modello">
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+              <div class="input-form">
+              <label for="targa"><b>Targa</b></label><br>
+              <input type="text" id="targa">
+            </div>
+          </div>
+
+          </div>
+          <div class="row">
+
+            <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+              <div class="input-form">
+              <label for="cilindrata"><b>Cilindrata</b></label><br>
+              <input type="number" id="cilindrata">
+            </div>
+            </div>
+
+
+            <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+              <div class="input-form">
+              <label for="cavalli"><b>Numero cavalli</b></label><br>
+              <input type="number" id="cavalli">
+            </div>
+            </div>
+
+
+            <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+              <div class="input-form">
+              <label for="alimentazione"><b>Alimentazione</b></label><br>
+              <input type="text" id="alimentazione">
+            </div>
+            </div>
+
+
+          </div>
+          <div class="row">
+
+            <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+              <div class="input-form">
+              <label for="annoImmatricolazione"><b>Anno di Immatricolazione</b></label><br>
+              <input type="number" id="annoImmatricolazione">
+            </div>
+          </div>
+
+          </div>
+
+          <button type="submit">AGGIUNGI AUTO</button>
+            </form>
           </div>
         </div>
       </details>

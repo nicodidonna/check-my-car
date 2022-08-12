@@ -1,6 +1,6 @@
 import { AssicurazioneInterface } from "src/app/@assicurazione/interfaces/AssicurazioneInterface";
 import { BolloInterface } from "src/app/@bollo/interfaces/BolloInterface";
-import { ManutenzioneInterface } from "src/app/@manutenzione/ManutenzioneInterface";
+import { ManutenzioneInterface } from "src/app/@manutenzione/interfaces/ManutenzioneInterface";
 import { RevisioneInterface } from "src/app/@revisione/interfaces/RevisioneInterface";
 import { TagliandoInterface } from "src/app/@tagliando/interfaces/TagliandoInterface";
 import { AutoInterface } from "../interfaces/AutoInterface";
