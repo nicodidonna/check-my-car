@@ -31,6 +31,7 @@
               <label for="marca"><b>Casa Automobilistica</b></label><br>
               <input type="text" id="marca" formControlName="marca">
               </div>
+              <div class="input-error" *ngIf="form.get('marca').invalid && (form.get('marca').dirty || form.get('marca').touched)">Campo Obbligatorio - Inserisci almeno 3 caratteri</div>
             </div>
 
             <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
@@ -38,6 +39,7 @@
               <label for="modello"><b>Modello</b></label><br>
               <input type="text" id="modello" formControlName="modello">
             </div>
+            <div class="input-error" *ngIf="form.get('modello').invalid && (form.get('modello').dirty || form.get('modello').touched)">Campo Obbligatorio - Inserisci almeno 3 caratteri</div>
           </div>
 
           <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
@@ -45,6 +47,7 @@
               <label for="targa"><b>Targa</b></label><br>
               <input type="text" id="targa" formControlName="targa">
             </div>
+            <div class="input-error" *ngIf="form.get('targa').invalid && (form.get('targa').dirty || form.get('targa').touched)">Campo Obbligatorio - Inserisci la targa nel giusto formato</div>
           </div>
 
           </div>
@@ -55,6 +58,7 @@
               <label for="cilindrata"><b>Cilindrata</b></label><br>
               <input type="number" id="cilindrata" formControlName="cilindrata">
             </div>
+            <div class="input-error" *ngIf="form.get('cilindrata').invalid && (form.get('cilindrata').dirty || form.get('cilindrata').touched)">Campo obbligatorio - Esempio 1500</div>
             </div>
 
 
@@ -63,14 +67,24 @@
               <label for="cavalli"><b>Numero cavalli</b></label><br>
               <input type="number" id="cavalli" formControlName="cavalli">
             </div>
+            <div class="input-error" *ngIf="form.get('cavalli').invalid && (form.get('cavalli').dirty || form.get('cavalli').touched)">Campo obbligatorio</div>
             </div>
 
 
             <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
               <div class="input-form">
-              <label for="alimentazione"><b>Alimentazione</b></label><br>
-              <input type="text" id="alimentazione" formControlName="alimentazione">
+                <label for="alimentazione"><b>Alimentazione</b></label><br>
+
+                <select name="alimentaizone" id="alimentaizone" formControlName="alimentazione">
+                  <option value="Diesel">Diesel</option>
+                  <option value="Benzina">Benzina</option>
+                  <option value="Elettrica">Elettrica</option>
+                  <option value="GPL">GPL</option>
+                  <option value="Metano">Metano</option>
+                  <option value="Ibrida">Ibrida</option>
+                </select>
             </div>
+            <div class="input-error" *ngIf="form.get('alimentazione').invalid && (form.get('alimentazione').dirty || form.get('alimentazione').touched)">Campo obbligatorio</div>
             </div>
 
 
@@ -82,6 +96,7 @@
               <label for="annoImmatricolazione"><b>Anno di Immatricolazione</b></label><br>
               <input type="number" id="annoImmatricolazione" formControlName="annoImmatricolazione">
             </div>
+            <div class="input-error" *ngIf="form.get('annoImmatricolazione').invalid && (form.get('annoImmatricolazione').dirty || form.get('annoImmatricolazione').touched)">Campo obbligatorio - L'anno non può essere superiore a quello attuale</div>
           </div>
 
           </div>
