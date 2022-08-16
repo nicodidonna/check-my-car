@@ -53,4 +53,22 @@ export class ParcoAutoComponent implements OnInit {
 
   }
 
+
+  aggiungiAuto(){
+    this.listaAuto.push(new Auto({
+      marca: this.capitalizeFirstLetter(this.form.controls['marca'].value),
+      modello: this.capitalizeFirstLetter(this.form.controls['modello'].value),
+      targa: this.form.controls['targa'].value.toUpperCase(),
+      cilindrata: this.form.controls['cilindrata'].value,
+      cavalli: this.form.controls['cavalli'].value,
+      annoImmatricolazione: this.form.controls['annoImmatricolazione'].value,
+      alimentazione: this.capitalizeFirstLetter(this.form.controls['alimentazione'].value)
+    }));
+
+    this.form.reset;
+  }
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 }
