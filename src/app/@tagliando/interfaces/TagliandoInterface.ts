@@ -6,5 +6,5 @@ export interface TagliandoInterface{
     officina: string,
     descrizione: string,
     kilometraggio?: number
-    auto?: AutoInterface;
+    auto: AutoInterface;
 }

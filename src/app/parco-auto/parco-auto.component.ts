@@ -101,6 +101,6 @@ export class ParcoAutoComponent implements OnInit {
 
   rimuoviAuto(targa){
     let indiceAutoSelezionata = this.AutoService.listaAuto.findIndex(x => x.targa === targa);
-    this.AutoService.listaAuto.splice(indiceAutoSelezionata,1);
+    this.AutoService.rimuoviAuto(indiceAutoSelezionata);
   }
 }

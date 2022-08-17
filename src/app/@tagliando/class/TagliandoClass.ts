@@ -7,7 +7,7 @@ export class Tagliando implements TagliandoInterface{
     officina: string | null | undefined;
     descrizione: string | null | undefined;
     kilometraggio?: number | null | undefined;
-    auto?: Auto | null | undefined;
+    auto: Auto | null | undefined;
 
     constructor(tagliando: TagliandoInterface){
         this.dataTagliando = tagliando.dataTagliando;

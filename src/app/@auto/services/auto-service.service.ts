@@ -14,8 +14,8 @@ export class AutoServiceService {
     this.listaAuto.push(auto);
   }
 
-  rimuoviAuto(auto){
-
+  rimuoviAuto(indiceAuto){
+    this.listaAuto.splice(indiceAuto,1);
   }
 
 }
