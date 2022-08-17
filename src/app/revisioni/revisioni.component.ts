@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Tagliando } from '../@tagliando/class/TagliandoClass';
 
 @Component({
   selector: 'app-revisioni',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RevisioniComponent implements OnInit {
 
+  listaTagliandi: Array<Tagliando> = [];
+
   constructor() { }
 
   ngOnInit(): void {
+    this.listaTagliandi.push(new Tagliando({
+      dataTagliando: new Date(),
+      prezzo: 100,
+      officina: "Tonio e Nino",
+      descrizione: "Cambio dell'olio e filtro abitacolo",
+      kilometraggio: 40000
+    }))
   }
 
 }
