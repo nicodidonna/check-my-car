@@ -110,18 +110,19 @@
     
     <div class="row">
         
-        <div class="card" *ngFor="let e of listaAuto">
-            <div class="title">{{e.marca.toUpperCase()}} {{e.modello.toUpperCase()}}</div>
+        <div class="card" *ngFor="let auto of listaAuto">
+            <div class="title">{{auto.marca.toUpperCase()}} {{auto.modello.toUpperCase()}}</div>
             
             <div class="icon">
-                <img src="assets/loghi-auto/{{e.marca.toLowerCase()}}.png">
+                <img src="assets/loghi-auto/{{auto.marca.toLowerCase()}}.png">
             </div><!--/icon-->
             
             <div class="features">
                 <ul>
-                    <li><b>Numero di Targa:</b> {{e.targa}}</li>
-                    <li><b>Motorizzazione:</b> {{e.cilindrata}} {{e.cavalli}}cv - {{e.alimentazione}}</li>
-                    <li><b>Anno di immatricolazione:</b> {{e.annoImmatricolazione}}</li>
+                    <li><b>Numero di Targa:</b> {{auto.targa}}</li>
+                    <li><b>Motorizzazione:</b> {{auto.cilindrata}} {{auto.cavalli}}cv - {{auto.alimentazione}}</li>
+                    <li><b>Anno di immatricolazione:</b> {{auto.annoImmatricolazione}}</li>
+                    <li style="margin-top: 30px;" (click)="rimuoviAuto(auto.targa)"><span>ELIMINA AUTO<br><img src="assets/img/delete.png" width="30px"></span></li>
                 </ul>
             </div><!--/features-->
         

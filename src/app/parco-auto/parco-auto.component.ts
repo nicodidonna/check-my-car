@@ -16,7 +16,7 @@ export class ParcoAutoComponent implements OnInit {
   constructor(private fb: FormBuilder) {
     this.form = fb.group({
       marca: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
-      modello: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
+      modello: new FormControl("", Validators.compose([Validators.minLength(2), Validators.required])),
       targa: new FormControl("",Validators.compose([Validators.pattern("^([A-Ha-h]|[K-Nk-n]|[Pp]|[R-Tr-t]|[Vv]|[X-Zx-z]){2}[1-9]{3}([A-Ha-h]|[K-Nk-n]|[Pp]|[R-Tr-t]|[Vv]|[X-Zx-z]){2}$"),Validators.required])),
       cilindrata: new FormControl("",Validators.compose([Validators.pattern('^[0-9]{3,4}$'),Validators.required])),
       cavalli: new FormControl("", Validators.compose([Validators.pattern('^[0-9]{3,4}$'), Validators.required])),
@@ -97,5 +97,11 @@ export class ParcoAutoComponent implements OnInit {
     }else{
       return annoInserito;
     }
+  }
+
+  rimuoviAuto(targa){
+    let indiceAutoSelezionata = this.listaAuto.findIndex(x => x.targa === targa);
+    console.log(indiceAutoSelezionata);
+    this.listaAuto.splice(indiceAutoSelezionata,1);
   }
 }
