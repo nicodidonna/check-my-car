@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Auto } from '../@auto/class/AutoClass';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { AutoServiceService } from '../@auto/services/auto-service.service';
 
 @Component({
   selector: 'app-parco-auto',
@@ -10,10 +11,9 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class ParcoAutoComponent implements OnInit {
 
   form: FormGroup;
-  listaAuto: Array<Auto> = [];
   
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, public AutoService: AutoServiceService) {
     this.form = fb.group({
       marca: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
       modello: new FormControl("", Validators.compose([Validators.minLength(2), Validators.required])),
@@ -27,7 +27,7 @@ export class ParcoAutoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.listaAuto.push(new Auto(
+    this.AutoService.aggiungiAuto(new Auto(
       {
         marca:"Dacia",
         modello:"Duster",
@@ -39,7 +39,7 @@ export class ParcoAutoComponent implements OnInit {
       }
     ));
     
-    this.listaAuto.push(new Auto(
+    this.AutoService.aggiungiAuto(new Auto(
       {
         marca: "Citroen",
         modello: "C3",
@@ -58,7 +58,7 @@ export class ParcoAutoComponent implements OnInit {
     this.checkAnnoImmatricolazione(this.form.controls['annoImmatricolazione'].value);
 
     if(this.form.valid){
-    this.listaAuto.push(new Auto({
+    this.AutoService.aggiungiAuto(new Auto({
       marca: this.capitalizeFirstLetter(this.form.controls['marca'].value),
       modello: this.capitalizeFirstLetter(this.form.controls['modello'].value),
       targa: this.form.controls['targa'].value.toUpperCase(),
@@ -100,8 +100,7 @@ export class ParcoAutoComponent implements OnInit {
   }
 
   rimuoviAuto(targa){
-    let indiceAutoSelezionata = this.listaAuto.findIndex(x => x.targa === targa);
-    console.log(indiceAutoSelezionata);
-    this.listaAuto.splice(indiceAutoSelezionata,1);
+    let indiceAutoSelezionata = this.AutoService.listaAuto.findIndex(x => x.targa === targa);
+    this.AutoService.listaAuto.splice(indiceAutoSelezionata,1);
   }
 }

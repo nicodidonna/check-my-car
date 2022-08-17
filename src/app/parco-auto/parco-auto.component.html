@@ -110,7 +110,7 @@
     
     <div class="row">
         
-        <div class="card" *ngFor="let auto of listaAuto">
+        <div class="card" *ngFor="let auto of this.AutoService.listaAuto">
             <div class="title">{{auto.marca.toUpperCase()}} {{auto.modello.toUpperCase()}}</div>
             
             <div class="icon">
