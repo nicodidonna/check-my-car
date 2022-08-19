@@ -17,4 +17,9 @@ export class TagliandoServiceService {
   aggiungiTagliando(tagliando){
     this.listaTagliandi.push(tagliando);
   }
+
+  tagliandiFilter(targa){
+     return this.getTagliandi().filter(
+      (tagliando) => {tagliando.auto.targa == targa});
+  }
 }

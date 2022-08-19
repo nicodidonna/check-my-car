@@ -13,8 +13,9 @@ export class AppComponent {
   title = 'check-my-car';
 
   constructor(public autoService: AutoServiceService, public tagliandoService: TagliandoServiceService) {
-    
+  }
 
+  ngOnInit() {
     this.tagliandoService.aggiungiTagliando(new Tagliando({
       dataTagliando: new Date(),
       prezzo: 100,
@@ -60,7 +61,7 @@ export class AppComponent {
         cavalli:115,
         annoImmatricolazione:2015,
         alimentazione:"Diesel",
-        tagliandi: [this.tagliandoService.getTagliandi()[0],this.tagliandoService.getTagliandi()[1]]
+        tagliandi: this.tagliandoService.tagliandiFilter("FA773ZR")
       }
     ));
     
@@ -76,10 +77,5 @@ export class AppComponent {
         tagliandi: [this.tagliandoService.getTagliandi()[2],this.tagliandoService.getTagliandi()[3]]
       }
     ));
-
-  }
-
-  ngOnInit() {
-    console.log();
   }
 }
