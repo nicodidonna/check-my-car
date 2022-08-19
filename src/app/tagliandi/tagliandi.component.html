@@ -14,15 +14,15 @@
 			<div class="postcard__text t-dark">
 				<h1 class="postcard__title blue"><b>Officina:</b> {{tagliando.officina}}</h1>
 				<div class="postcard__subtitle small">
-					<time datetime="2020-05-25 12:00:00">
-						{{tagliando.dataTagliando | date: 'dd/MM/yyyy'}}
+					<img src="assets/img/date-icon.png" style="width:20px;"><time>
+						 {{ tagliando.dataTagliando | date: 'dd/MM/yyyy'}}
 					</time>
 				</div>
 				<div class="postcard__bar"></div>
 				<div class="postcard__preview-txt">{{tagliando.descrizione}}</div>
 				<ul class="postcard__tagbox">
-					<li class="tag__item" *ngIf="tagliando.prezzo">Prezzo: {{tagliando.prezzo}}€</li>
-					<li class="tag__item" *ngIf="tagliando.kilometraggio">Kilometraggio: {{tagliando.kilometraggio}} Km</li>
+					<li class="tag__item" *ngIf="tagliando.prezzo"><img src="assets/img/money-icon.png" style="width:20px;"> Prezzo: {{tagliando.prezzo}}€</li>
+					<li class="tag__item" *ngIf="tagliando.kilometraggio"><img src="assets/img/km-icon.png" style="width:20px;"> Kilometraggio: {{tagliando.kilometraggio}} Km</li>
 				</ul>
 			</div>
 		</article>
