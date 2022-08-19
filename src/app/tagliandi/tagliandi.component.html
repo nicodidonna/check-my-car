@@ -1,7 +1,32 @@
 <div class="container" style="margin-top: 15px; margin-bottom:15px">
 
-<div class="main-title">
+<div class="main-title" style="margin-bottom: 30px">
     <h1 class="text-center">STORICO TAGLIANDI</h1>
 </div>
+
+<div *ngFor="let auto of this.autoService.getAuto()">
+<h1 style="margin-bottom: 30px">Tagliandi di: {{auto.marca}} {{auto.modello}}</h1>
+
+<section class="light">
+	<div class="container py-2">
+
+		<article class="postcard light blue" *ngFor="let tagliando of tagliandoService.getTagliandi()">
+			<div class="postcard__text t-dark">
+				<h1 class="postcard__title blue"><a href="#">Officina: {{tagliando.officina}}</a></h1>
+				<div class="postcard__subtitle small">
+					<time datetime="2020-05-25 12:00:00">
+						<i class="fas fa-calendar-alt mr-2"></i>{{tagliando.dataTagliando | date: 'dd/MM/yyyy'}}
+					</time>
+				</div>
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt">{{tagliando.descrizione}}</div>
+				<ul class="postcard__tagbox">
+					<li class="tag__item" *ngIf="tagliando.prezzo">Prezzo: {{tagliando.prezzo}}€</li>
+					<li class="tag__item" *ngIf="tagliando.kilometraggio">Kilometraggio: {{tagliando.kilometraggio}} Km</li>
+				</ul>
+			</div>
+		</article>
+	</div>
+</section>
 
 </div>

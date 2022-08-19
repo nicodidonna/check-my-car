@@ -10,17 +10,9 @@ import { TagliandoServiceService } from '../@tagliando/services/tagliando-servic
 })
 export class TagliandiComponent implements OnInit {
 
-  constructor(public AutoService: AutoServiceService, public TagliandoService: TagliandoServiceService) { }
+  constructor(public autoService: AutoServiceService, public tagliandoService: TagliandoServiceService) { }
 
   ngOnInit(): void {
-    this.TagliandoService.aggiungiTagliando(new Tagliando({
-      dataTagliando: new Date(),
-      prezzo: 100,
-      officina: "Tonio e Nino",
-      descrizione: "Cambio dell'olio e filtro abitacolo",
-      kilometraggio: 40000,
-      auto: this.AutoService.listaAuto[1]
-    }))
   }
 
 }

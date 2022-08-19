@@ -10,6 +10,10 @@ export class TagliandoServiceService {
 
   constructor() { }
 
+  getTagliandi(){
+    return this.listaTagliandi;
+  }
+
   aggiungiTagliando(tagliando){
     this.listaTagliandi.push(tagliando);
   }

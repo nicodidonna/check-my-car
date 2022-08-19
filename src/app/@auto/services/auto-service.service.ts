@@ -10,6 +10,10 @@ export class AutoServiceService {
 
   constructor() { }
 
+  getAuto(){
+    return this.listaAuto;
+  }
+
   aggiungiAuto(auto){
     this.listaAuto.push(auto);
   }

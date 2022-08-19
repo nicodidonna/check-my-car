@@ -13,7 +13,7 @@ export class ParcoAutoComponent implements OnInit {
   form: FormGroup;
   
 
-  constructor(private fb: FormBuilder, public AutoService: AutoServiceService) {
+  constructor(private fb: FormBuilder, public autoService: AutoServiceService) {
     this.form = fb.group({
       marca: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
       modello: new FormControl("", Validators.compose([Validators.minLength(2), Validators.required])),
@@ -26,31 +26,6 @@ export class ParcoAutoComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
-    this.AutoService.aggiungiAuto(new Auto(
-      {
-        marca:"Dacia",
-        modello:"Duster",
-        targa:"FA773ZR",
-        cilindrata:1.5,
-        cavalli:115,
-        annoImmatricolazione:2015,
-        alimentazione:"Diesel"
-      }
-    ));
-    
-    this.AutoService.aggiungiAuto(new Auto(
-      {
-        marca: "Citroen",
-        modello: "C3",
-        targa: "CK829YZ",
-        cilindrata: 1.1,
-        cavalli: 60,
-        annoImmatricolazione: 2004,
-        alimentazione: "Benzina"
-      }
-    ));
-
   }
 
 
@@ -58,7 +33,7 @@ export class ParcoAutoComponent implements OnInit {
     this.checkAnnoImmatricolazione(this.form.controls['annoImmatricolazione'].value);
 
     if(this.form.valid){
-    this.AutoService.aggiungiAuto(new Auto({
+    this.autoService.aggiungiAuto(new Auto({
       marca: this.capitalizeFirstLetter(this.form.controls['marca'].value),
       modello: this.capitalizeFirstLetter(this.form.controls['modello'].value),
       targa: this.form.controls['targa'].value.toUpperCase(),
@@ -100,7 +75,7 @@ export class ParcoAutoComponent implements OnInit {
   }
 
   rimuoviAuto(targa){
-    let indiceAutoSelezionata = this.AutoService.listaAuto.findIndex(x => x.targa === targa);
-    this.AutoService.rimuoviAuto(indiceAutoSelezionata);
+    let indiceAutoSelezionata = this.autoService.listaAuto.findIndex(x => x.targa === targa);
+    this.autoService.rimuoviAuto(indiceAutoSelezionata);
   }
 }
