@@ -61,7 +61,7 @@ export class AppComponent {
         cavalli:115,
         annoImmatricolazione:2015,
         alimentazione:"Diesel",
-        tagliandi: this.tagliandoService.tagliandiFilter("FA773ZR")
+        tagliandi: [this.tagliandoService.getTagliandi()[0],this.tagliandoService.getTagliandi()[1]]
       }
     ));
     

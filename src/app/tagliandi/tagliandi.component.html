@@ -4,6 +4,96 @@
     <h1 class="text-center">STORICO TAGLIANDI</h1>
 </div>
 
+<details style="margin: 10px;">
+	<summary>
+	  <div class="modal-button" style="margin-top:20px;">
+		Aggiungi tagliando
+	  </div>
+	  <div class="details-modal-overlay"></div>
+	</summary>
+	<div class="details-modal">
+	  <div class="details-modal-close">
+		<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+		  <path fill-rule="evenodd" clip-rule="evenodd" d="M13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711Z" fill="black" />
+		</svg>
+	  </div>
+	  <div class="details-modal-title">
+		<h1>Compila il form per aggiungere un tagliando</h1>
+	  </div>
+	  <div class="details-modal-content">
+		
+		<form [formGroup]="">
+
+		  <div class="row">
+
+			<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+		  <div class="input-form">
+		  <label for="officina"><b>Officina</b></label><br>
+		  <input type="text" id="officina" >
+		  </div>
+		  <div class="input-error" >Campo Obbligatorio - Inserisci almeno 3 caratteri</div>
+		</div>
+
+		<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+		  <div class="input-form">
+		  <label for="prezzo"><b>Prezzo</b></label><br>
+		  <input type="text" id="prezzo" >
+		</div>
+		<div class="input-error" >Campo Obbligatorio - Inserisci almeno 3 caratteri</div>
+	  </div>
+
+	  <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+		  <div class="input-form">
+		  <label for="data"><b>Data</b></label><br>
+		  <input type="date" id="data" >
+		</div>
+		<div class="input-error" >Campo Obbligatorio - Inserisci la targa nel giusto formato</div>
+	  </div>
+
+	  </div>
+	  <div class="row">
+
+		<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+		  <div class="input-form">
+		  <label for="kilometraggio"><b>Kilometraggio</b></label><br>
+		  <input type="number" id="kilometraggio">
+		</div>
+		<div class="input-error" >Campo obbligatorio - Esempio 1500</div>
+		</div>
+
+		<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+			<div class="input-form">
+			  <label for="alimentazione"><b>Auto</b></label><br>
+  
+			  <select name="alimentaizone" id="alimentaizone">
+				<option value="{{auto.targa}}" *ngFor="let auto of this.autoService.getAuto()">{{auto.marca}} {{auto.modello}}</option>
+			  </select>
+		  </div>
+		  <div class="input-error">Campo obbligatorio</div>
+		  </div>
+
+
+		<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+		  <div class="input-form">
+		  <label for="descrizione"><b>Descrizione intervento</b></label><br>
+		  <input type="text" id="descrizione" >
+		</div>
+		<div class="input-error">Campo obbligatorio</div>
+		</div>
+
+
+	  </div>
+	  <div class="row">
+
+	  </div>
+
+	  <button type="button">AGGIUNGI TAGLIANDO</button>
+		</form>
+
+	  </div>
+	</div>
+  </details>
+
 <div *ngFor="let auto of this.autoService.getAuto()">
 <h1 style="margin-bottom: 30px">Tagliandi di: {{auto.marca}} {{auto.modello}}</h1>
 

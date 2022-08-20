@@ -260,3 +260,61 @@ a, a:hover {
 		background-image: linear-gradient(80deg, $main-blue-rgb-015, transparent 50%);
 	}
 }
+
+
+.input-form{
+
+  label{
+    color:#061A40
+  }
+  input{
+    height: 25px;
+    border: 1px solid #061A40;
+    border-radius: 5px;
+    background-color: #EDF7F6;
+    color: #285267;
+    font-weight: 700;
+    padding: 5px;
+  }
+  select{
+    height: 25px;
+    border: 1px solid #061A40;
+    border-radius: 5px;
+    background-color: #EDF7F6;
+    color: #285267;
+    font-weight: 700;
+    padding: 5px;
+  }
+  
+}
+
+form{
+  button{
+    height: 35px;
+    background-color: #285267;
+    border: 0px;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 15px;
+    color: white;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center; 
+    cursor: pointer;
+  }
+}
+
+form{
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: default;
+}
+}
+
+.input-error{
+  font-size: 13px;
+  color: red;
+}
