@@ -65,7 +65,7 @@
 			  <label for="auto"><b>Auto</b></label><br>
   
 			  <select name="auto" id="auto" formControlName="auto">
-				<option value="{{auto}}" *ngFor="let auto of this.autoService.getAuto()">{{auto.marca}} {{auto.modello}}</option>
+				<option *ngFor="let auto of this.autoService.getAuto()" ngValue="{{auto}}">{{auto.marca}} {{auto.modello}}</option>
 			  </select>
 		  </div>
 		  <div class="input-error" *ngIf="form.get('auto').invalid && (form.get('auto').dirty || form.get('auto').touched)">Campo obbligatorio</div>
@@ -86,7 +86,7 @@
 
 	  </div>
 
-	  <button type="button">AGGIUNGI TAGLIANDO</button>
+	  <button type="button" (click)="aggiungiTagliando()">AGGIUNGI TAGLIANDO</button>
 		</form>
 
 	  </div>

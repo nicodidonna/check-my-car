@@ -43,7 +43,7 @@ export class ParcoAutoComponent implements OnInit {
       alimentazione: this.capitalizeFirstLetter(this.form.controls['alimentazione'].value)
     }));
 
-    this.form.reset;
+    this.form.reset();
   }
   }
 
