@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AutoServiceService } from '../@auto/services/auto-service.service';
 import { Tagliando } from '../@tagliando/class/TagliandoClass';
 import { TagliandoServiceService } from '../@tagliando/services/tagliando-service.service';
@@ -10,7 +11,19 @@ import { TagliandoServiceService } from '../@tagliando/services/tagliando-servic
 })
 export class TagliandiComponent implements OnInit {
 
-  constructor(public autoService: AutoServiceService, public tagliandoService: TagliandoServiceService) { }
+  form: FormGroup;
+  
+
+  constructor(private fb: FormBuilder, public autoService: AutoServiceService, public tagliandoService: TagliandoServiceService) { 
+    this.form = fb.group({
+      officina: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
+      prezzo: new FormControl("", Validators.compose([Validators.minLength(2), Validators.required])),
+      data: new FormControl("",Validators.compose([Validators.required])),
+      kilometraggio: new FormControl("",Validators.compose([Validators.required])),
+      auto: new FormControl("", Validators.compose([Validators.required])),
+      descrizione: new FormControl("", Validators.compose([Validators.minLength(8),Validators.required])),
+    });
+  }
 
   ngOnInit(): void {
   }

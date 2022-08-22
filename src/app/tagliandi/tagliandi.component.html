@@ -22,14 +22,14 @@
 	  </div>
 	  <div class="details-modal-content">
 		
-		<form [formGroup]="">
+		<form [formGroup]="form">
 
 		  <div class="row">
 
 			<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
 		  <div class="input-form">
 		  <label for="officina"><b>Officina</b></label><br>
-		  <input type="text" id="officina" >
+		  <input type="text" id="officina" formControlName="officina">
 		  </div>
 		  <div class="input-error" >Campo Obbligatorio - Inserisci almeno 3 caratteri</div>
 		</div>
@@ -37,17 +37,16 @@
 		<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
 		  <div class="input-form">
 		  <label for="prezzo"><b>Prezzo</b></label><br>
-		  <input type="text" id="prezzo" >
+		  <input type="text" id="prezzo" formControlName="prezzo">
 		</div>
-		<div class="input-error" >Campo Obbligatorio - Inserisci almeno 3 caratteri</div>
 	  </div>
 
 	  <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
 		  <div class="input-form">
 		  <label for="data"><b>Data</b></label><br>
-		  <input type="date" id="data" >
+		  <input type="date" id="data" formControlName="data">
 		</div>
-		<div class="input-error" >Campo Obbligatorio - Inserisci la targa nel giusto formato</div>
+		<div class="input-error" >Campo Obbligatorio</div>
 	  </div>
 
 	  </div>
@@ -56,17 +55,17 @@
 		<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
 		  <div class="input-form">
 		  <label for="kilometraggio"><b>Kilometraggio</b></label><br>
-		  <input type="number" id="kilometraggio">
+		  <input type="number" id="kilometraggio" formControlName="kilometraggio">
 		</div>
-		<div class="input-error" >Campo obbligatorio - Esempio 1500</div>
+		<div class="input-error" >Campo obbligatorio - Esempio 55200</div>
 		</div>
 
 		<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
 			<div class="input-form">
-			  <label for="alimentazione"><b>Auto</b></label><br>
+			  <label for="auto"><b>Auto</b></label><br>
   
-			  <select name="alimentaizone" id="alimentaizone">
-				<option value="{{auto.targa}}" *ngFor="let auto of this.autoService.getAuto()">{{auto.marca}} {{auto.modello}}</option>
+			  <select name="auto" id="auto" formControlName="auto">
+				<option value="{{auto}}" *ngFor="let auto of this.autoService.getAuto()">{{auto.marca}} {{auto.modello}}</option>
 			  </select>
 		  </div>
 		  <div class="input-error">Campo obbligatorio</div>
@@ -76,7 +75,7 @@
 		<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
 		  <div class="input-form">
 		  <label for="descrizione"><b>Descrizione intervento</b></label><br>
-		  <input type="text" id="descrizione" >
+		  <textarea type="text" rows="2" id="descrizione" formControlName="descrizione"></textarea>
 		</div>
 		<div class="input-error">Campo obbligatorio</div>
 		</div>
