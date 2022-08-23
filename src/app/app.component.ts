@@ -26,6 +26,33 @@ export class AppComponent {
       officina: "Tansella",
       kilometraggio: 10000,
       auto: this.autoService.getAuto()[0]
+    }))
+    
+    this.revisioniService.aggiungiRevisione(new Revisione({
+      dataRevisione: new Date("2022-12-12"),
+      dataProssimaRevisione: this.revisioniService.getProssimaRevisione(new Date("2022-12-12")),
+      prezzo: 300,
+      officina: "Tansella 2",
+      kilometraggio: 3000,
+      auto: this.autoService.getAuto()[0]
+    }))
+
+    this.revisioniService.aggiungiRevisione(new Revisione({
+      dataRevisione: new Date("2018-10-10"),
+      dataProssimaRevisione: this.revisioniService.getProssimaRevisione(new Date("2018-6-6")),
+      prezzo: 400,
+      officina: "Tansella 3",
+      kilometraggio: 45000,
+      auto: this.autoService.getAuto()[1]
+    }))
+
+    this.revisioniService.aggiungiRevisione(new Revisione({
+      dataRevisione: new Date("2017-11-20"),
+      dataProssimaRevisione: this.revisioniService.getProssimaRevisione(new Date("2017-11-20")),
+      prezzo: 500,
+      officina: "Tansella 4",
+      kilometraggio: 87000,
+      auto: this.autoService.getAuto()[1]
     }))      
 
     this.tagliandoService.aggiungiTagliando(new Tagliando({
