@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AutoServiceService } from '../@auto/services/auto-service.service';
 
 @Component({
@@ -8,7 +9,17 @@ import { AutoServiceService } from '../@auto/services/auto-service.service';
 })
 export class RevisioniComponent implements OnInit {
 
-  constructor(public autoService : AutoServiceService) { }
+  form : FormGroup;
+
+  constructor(private fb: FormBuilder, public autoService : AutoServiceService) { 
+    this.form = fb.group({
+      officina: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
+      prezzo: new FormControl("", Validators.compose([Validators.minLength(2), Validators.required])),
+      data: new FormControl("",Validators.compose([Validators.required])),
+      kilometraggio: new FormControl("",Validators.compose([Validators.required])),
+      auto: new FormControl("", Validators.compose([Validators.required]))
+    });
+  }
 
   ngOnInit(): void {
   }
