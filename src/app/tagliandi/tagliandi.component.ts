@@ -12,7 +12,7 @@ import { TagliandoServiceService } from '../@tagliando/services/tagliando-servic
 export class TagliandiComponent implements OnInit {
 
   form: FormGroup;
-  
+
 
   constructor(private fb: FormBuilder, public autoService: AutoServiceService, public tagliandoService: TagliandoServiceService) { 
     this.form = fb.group({
@@ -31,14 +31,14 @@ export class TagliandiComponent implements OnInit {
 
   aggiungiTagliando(){
 
-    let autoSelezionata = this.autoService.getAuto()[1];
+    let autoSelezionata = this.form.controls['auto'].value;
     let nuovoTagliando = new Tagliando({
       dataTagliando: this.form.controls['data'].value,
       prezzo: this.form.controls['prezzo'].value,
       officina: this.capitalizeFirstLetter(this.form.controls['officina'].value) ,
       descrizione: this.capitalizeFirstLetter(this.form.controls['descrizione'].value),
       kilometraggio:this.form.controls['kilometraggio'].value,
-      auto: this.autoService.getAuto()[1]
+      auto: this.form.controls['auto'].value
     });
 
     console.log("LOG VALUE DELLA SELECT:",autoSelezionata);
