@@ -22,4 +22,12 @@ export class RevisioneServiceService {
       return this.getRevisioni().filter(
        (tagliando) => {tagliando.auto.targa == targa});
   }
+
+  getProssimaRevisione(dataRevisione){
+    let anno = dataRevisione.getFullYear();
+    let mese = dataRevisione.getMonth();
+    let giorno = dataRevisione.getDate();
+    let nuovaData = new Date(anno + 2, mese, giorno);
+    return nuovaData;
+  }
 }
