@@ -1,6 +1,36 @@
 <div class="container" style="margin-top: 15px; margin-bottom:15px">
 <div class="main-title">
     <h1 class="text-center">STORICO REVISIONI</h1>
+    <h5 class="text-center">Ogni quanto si effettua la revisione?</h5>
+    <h5 class="text-center">La revisione va effettuata 4 anni dopo la prima immatricolazione e ogni 2 anni dalla prima revisione</h5>
     </div>
+
+    <div *ngFor="let auto of this.autoService.getAuto()">
+        <h1 style="margin-bottom: 30px">Tagliandi di: {{auto.marca}} {{auto.modello}}</h1>
+        
+        <section class="light">
+            <div class="container py-2">
+        
+                <article class="postcard light blue" *ngFor="let revisione of auto.revisioni">
+                    <div class="postcard__text t-dark">
+                        <h1 class="postcard__title blue"><b>Officina:</b> {{revisione.officina}}</h1>
+                        <div class="postcard__subtitle small">
+                            <img src="assets/img/date-icon.png" style="width:20px;"><time>
+                                 {{ revisione.dataRevisione | date: 'dd/MM/yyyy'}}
+                            </time>
+                        </div>
+                        <div class="postcard__bar"></div>
+                        <div class="postcard__preview-txt">La prossima revisione deve essere effettuata entro il: <b>{{revisione.dataProssimaRevisione | date: 'dd/MM/yyyy'}}</b></div>
+                        <ul class="postcard__tagbox">
+                            <li class="tag__item" *ngIf="revisione.prezzo"><img src="assets/img/money-icon.png" style="width:20px;"> Prezzo: {{revisione.prezzo}}€</li>
+                            <li class="tag__item" *ngIf="revisione.kilometraggio"><img src="assets/img/km-icon.png" style="width:20px;"> Kilometraggio: {{revisione.kilometraggio}} Km</li>
+                            <li class="tag__item">Periodo di revisione: 4 anni dopo la prima immatricolazione e ogni 2 anni dalla prima revisione</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        </div>
 
 </div>
