@@ -20,7 +20,7 @@ export class RevisioneServiceService {
 
   revisioneFilter(targa){
       return this.getRevisioni().filter(
-       (tagliando) => {tagliando.auto.targa == targa});
+       (revisione) => {revisione.auto.targa == targa});
   }
 
   getProssimaRevisione(dataRevisione){
