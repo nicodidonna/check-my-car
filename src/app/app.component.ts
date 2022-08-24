@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Assicurazione } from './@assicurazione/class/AssicurazioneClass';
+import { AssicurazioneServiceService } from './@assicurazione/services/assicurazione-service.service';
 import { Auto } from './@auto/class/AutoClass';
 import { AutoServiceService } from './@auto/services/auto-service.service';
 import { Revisione } from './@revisione/class/RevisioneClass';
@@ -14,10 +16,42 @@ import { TagliandoServiceService } from './@tagliando/services/tagliando-service
 export class AppComponent {
   title = 'check-my-car';
 
-  constructor(public revisioniService: RevisioneServiceService,public autoService: AutoServiceService, public tagliandoService: TagliandoServiceService) {
+  constructor(public assicurazioneService: AssicurazioneServiceService,public revisioniService: RevisioneServiceService,public autoService: AutoServiceService, public tagliandoService: TagliandoServiceService) {
   }
 
   ngOnInit() {
+
+    this.assicurazioneService.aggiungiAssicurazione(new Assicurazione({
+      dataInizioAssicurazione : new Date("2018-1-20"),
+      dataFineAssicurazione : new Date("2018-7-20"),
+      prezzo : 265,
+      agenzia : "Ancona Assicurazioni",
+      auto : this.autoService.getAuto()[0]
+    }))
+
+    this.assicurazioneService.aggiungiAssicurazione(new Assicurazione({
+      dataInizioAssicurazione : new Date("2021-3-20"),
+      dataFineAssicurazione : new Date("2022-3-20"),
+      prezzo : 410,
+      agenzia : "Didonna Assicurazioni",
+      auto : this.autoService.getAuto()[0]
+    }))
+
+    this.assicurazioneService.aggiungiAssicurazione(new Assicurazione({
+      dataInizioAssicurazione : new Date("2017-4-13"),
+      dataFineAssicurazione : new Date("2019-10-13"),
+      prezzo : 180,
+      agenzia : "Luca Assicurazioni",
+      auto : this.autoService.getAuto()[1]
+    }))
+
+    this.assicurazioneService.aggiungiAssicurazione(new Assicurazione({
+      dataInizioAssicurazione : new Date("2019-1-20"),
+      dataFineAssicurazione : new Date("2019-7-20"),
+      prezzo : 330,
+      agenzia : "Generali Assicurazioni",
+      auto : this.autoService.getAuto()[1]
+    }))
 
     this.revisioniService.aggiungiRevisione(new Revisione({
       dataRevisione: new Date("2020-10-10"),
