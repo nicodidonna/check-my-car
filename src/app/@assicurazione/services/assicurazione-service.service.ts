@@ -6,7 +6,7 @@ import { Assicurazione } from '../class/AssicurazioneClass';
 })
 export class AssicurazioneServiceService {
 
-  listaAssicurazioni : Array<Assicurazione>;
+  listaAssicurazioni : Array<Assicurazione> = [];
 
   constructor() { }
 
