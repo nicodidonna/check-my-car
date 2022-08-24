@@ -38,7 +38,7 @@ export class TagliandiComponent implements OnInit {
       officina: this.capitalizeFirstLetter(this.form.controls['officina'].value) ,
       descrizione: this.capitalizeFirstLetter(this.form.controls['descrizione'].value),
       kilometraggio:this.form.controls['kilometraggio'].value,
-      auto: this.form.controls['auto'].value
+      auto: autoSelezionata
     });
 
     console.log("LOG VALUE DELLA SELECT:",autoSelezionata);
