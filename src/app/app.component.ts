@@ -135,7 +135,8 @@ export class AppComponent {
         annoImmatricolazione:2015,
         alimentazione:"Diesel",
         tagliandi: [this.tagliandoService.getTagliandi()[0],this.tagliandoService.getTagliandi()[1]],
-        revisioni: [this.revisioniService.getRevisioni()[0],this.revisioniService.getRevisioni()[1]]
+        revisioni: [this.revisioniService.getRevisioni()[0],this.revisioniService.getRevisioni()[1]],
+        assicurazioni: [this.assicurazioneService.getAssicurazioni()[0],this.assicurazioneService.getAssicurazioni()[1]]
       }
     ));
     
@@ -149,7 +150,8 @@ export class AppComponent {
         annoImmatricolazione: 2004,
         alimentazione: "Benzina",
         tagliandi: [this.tagliandoService.getTagliandi()[2],this.tagliandoService.getTagliandi()[3]],
-        revisioni: [this.revisioniService.getRevisioni()[2],this.revisioniService.getRevisioni()[3]]
+        revisioni: [this.revisioniService.getRevisioni()[2],this.revisioniService.getRevisioni()[3]],
+        assicurazioni: [this.assicurazioneService.getAssicurazioni()[2],this.assicurazioneService.getAssicurazioni()[3]]
       }
     ));
   }

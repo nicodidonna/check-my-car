@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AutoServiceService } from '../@auto/services/auto-service.service';
 
 @Component({
   selector: 'app-assicurazione-bollo',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssicurazioneBolloComponent implements OnInit {
 
-  constructor() { }
+  constructor(public autoService: AutoServiceService) { }
 
   ngOnInit(): void {
   }

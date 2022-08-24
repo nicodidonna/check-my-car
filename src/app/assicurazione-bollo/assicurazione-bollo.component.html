@@ -1,5 +1,33 @@
 <div class="container" style="margin-top: 15px; margin-bottom:15px">
+    
     <div class="main-title">
-<h1 class="text-center">INFORMAZIONI SU ASSICURAZIONE E BOLLO</h1>
-</div>
+        <h1 class="text-center">INFORMAZIONI SU ASSICURAZIONE E BOLLO</h1>
+    </div>
+
+    <div *ngFor="let auto of this.autoService.getAuto()">
+        <h1 style="margin-bottom: 30px">Assicurazioni di: {{auto.marca}} {{auto.modello}}</h1>
+        
+        <section class="light">
+            <div class="container py-2">
+        
+                <article class="postcard light blue" *ngFor="let assicurazione of auto.assicurazioni">
+                    <div class="postcard__text t-dark">
+                        <h1 class="postcard__title blue"><b>Agenzia Assicurativa:</b> {{assicurazione.agenzia}}</h1>
+                        <div class="postcard__subtitle small">
+                            <img src="assets/img/date-icon.png" style="width:20px;"><time>
+                                 {{ assicurazione.dataInizioAssicurazione | date: 'dd/MM/yyyy'}}
+                            </time>
+                        </div>
+                        <div class="postcard__bar"></div>
+                        <div class="postcard__preview-txt">L'assicurazione scade il: <b>{{assicurazione.dataFineAssicurazione | date: 'dd/MM/yyyy'}}</b></div>
+                        <ul class="postcard__tagbox">
+                            <li class="tag__item" *ngIf="assicurazione.prezzo"><img src="assets/img/money-icon.png" style="width:20px;"> Prezzo: {{assicurazione.prezzo}}€</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+        
+        </div>
+
 </div>
