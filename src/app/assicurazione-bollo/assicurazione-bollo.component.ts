@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Assicurazione } from '../@assicurazione/class/AssicurazioneClass';
 import { AutoServiceService } from '../@auto/services/auto-service.service';
 
 @Component({
@@ -25,7 +26,18 @@ export class AssicurazioneBolloComponent implements OnInit {
   }
 
   aggiungiAssicurazione(){
-    return "ciao";
+    let autoSelezionata = this.form.controls['auto'].value;
+    let nuovaAssicurazione = new Assicurazione({
+      dataInizioAssicurazione : new Date(this.form.controls['datainizio'].value),
+      dataFineAssicurazione : new Date(this.form.controls['datafine'].value),
+      prezzo : this.form.controls['prezzo'].value,
+      agenzia : this.form.controls['agenzia'].value,
+      auto : autoSelezionata
+    })
+
+    autoSelezionata.assicurazioni.push(nuovaAssicurazione);
+
+    this.form.reset();
   }
 
 }
