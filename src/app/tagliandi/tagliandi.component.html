@@ -1,123 +1,135 @@
 <div class="container" style="margin-top: 15px; margin-bottom:15px">
-
-<div class="main-title" style="margin-bottom: 30px">
-    <h1 class="text-center">STORICO TAGLIANDI</h1>
-	<h5 class="text-center">Quando effettuare il tagliando?</h5>
-    <h5 class="text-center">Il tagliando deve essere effettuato ogni 20.000/30.000 km oppure ogni 1/2 anni</h5>
-</div>
-
-<details style="margin: 10px;">
-	<summary>
-	  <div class="modal-button" style="margin-top:20px;">
-		Aggiungi tagliando
-	  </div>
-	  <div class="details-modal-overlay"></div>
-	</summary>
-	<div class="details-modal">
-	  <div class="details-modal-close">
-		<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-		  <path fill-rule="evenodd" clip-rule="evenodd" d="M13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711Z" fill="black" />
-		</svg>
-	  </div>
-	  <div class="details-modal-title">
-		<h1>Compila il form per aggiungere un tagliando</h1>
-	  </div>
-	  <div class="details-modal-content">
-		
-		<form [formGroup]="form">
-
-		  <div class="row">
-
-			<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
-		  <div class="input-form">
-		  <label for="officina"><b>Officina</b></label><br>
-		  <input type="text" id="officina" formControlName="officina">
-		  </div>
-		  <div class="input-error" *ngIf="form.get('officina').invalid && (form.get('officina').dirty || form.get('officina').touched)">Campo Obbligatorio - Inserisci almeno 3 caratteri</div>
-		</div>
-
-		<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
-		  <div class="input-form">
-		  <label for="prezzo"><b>Prezzo</b></label><br>
-		  <input type="number" id="prezzo" formControlName="prezzo">
-		</div>
-	  </div>
-
-	  <div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
-		  <div class="input-form">
-		  <label for="data"><b>Data</b></label><br>
-		  <input type="date" id="data" formControlName="data">
-		</div>
-		<div class="input-error" *ngIf="form.get('data').invalid && (form.get('data').dirty || form.get('data').touched)">Campo Obbligatorio</div>
-	  </div>
-
-	  </div>
-	  <div class="row">
-
-		<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
-		  <div class="input-form">
-		  <label for="kilometraggio"><b>Kilometraggio</b></label><br>
-		  <input type="number" id="kilometraggio" formControlName="kilometraggio">
-		</div>
-		<div class="input-error" *ngIf="form.get('kilometraggio').invalid && (form.get('kilometraggio').dirty || form.get('kilometraggio').touched)">Campo obbligatorio - Esempio 55200</div>
-		</div>
-
-		<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
-			<div class="input-form">
-			  <label for="auto"><b>Auto</b></label><br>
-  
-			  <select name="auto" id="auto" formControlName="auto">
-				<option *ngFor="let auto of this.autoService.getAuto()" [ngValue]="auto">{{auto.marca}} {{auto.modello}}</option>
-			  </select>
-		  </div>
-		  <div class="input-error" *ngIf="form.get('auto').invalid && (form.get('auto').dirty || form.get('auto').touched)">Campo obbligatorio</div>
-		  </div>
-
-
-		<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
-		  <div class="input-form">
-		  <label for="descrizione"><b>Descrizione intervento</b></label><br>
-		  <textarea type="text" rows="2" id="descrizione" formControlName="descrizione"></textarea>
-		</div>
-		<div class="input-error" *ngIf="form.get('descrizione').invalid && (form.get('descrizione').dirty || form.get('descrizione').touched)">Campo obbligatorio - Inserisci almeno 8 caratteri</div>
-		</div>
-
-
-	  </div>
-	  <div class="row">
-
-	  </div>
-
-	  <button type="button" (click)="aggiungiTagliando()">AGGIUNGI TAGLIANDO</button>
-		</form>
-
-	  </div>
+	
+	<div class="main-title" style="margin-bottom: 30px">
+		<h1 class="text-center">STORICO TAGLIANDI</h1>
+		<h5 class="text-center">Quando effettuare il tagliando?</h5>
+		<h5 class="text-center">Il tagliando deve essere effettuato ogni 20.000/30.000 km oppure ogni 1/2 anni</h5>
 	</div>
-  </details>
-
-<div *ngFor="let auto of this.autoService.getAuto()">
-<h1 style="margin-bottom: 30px">Tagliandi di: {{auto.marca}} {{auto.modello}}</h1>
-
-<section class="light">
-	<div class="container py-2">
-
-		<article class="postcard light blue" *ngFor="let tagliando of auto.tagliandi">
-			<div class="postcard__text t-dark">
-				<h1 class="postcard__title blue"><b>Officina:</b> {{tagliando.officina}}</h1>
-				<div class="postcard__subtitle small">
-					<img src="assets/img/date-icon.png" style="width:20px;"><time>
-						 {{ tagliando.dataTagliando | date: 'dd/MM/yyyy'}}
-					</time>
-				</div>
-				<div class="postcard__bar"></div>
-				<div class="postcard__preview-txt">{{tagliando.descrizione}}</div>
-				<ul class="postcard__tagbox">
-					<li class="tag__item" *ngIf="tagliando.prezzo"><img src="assets/img/money-icon.png" style="width:20px;"> Prezzo: {{tagliando.prezzo}}€</li>
-					<li class="tag__item" *ngIf="tagliando.kilometraggio"><img src="assets/img/km-icon.png" style="width:20px;"> Kilometraggio: {{tagliando.kilometraggio}} Km</li>
-				</ul>
+	
+	
+	<details style="margin: 10px;">
+		<summary>
+			<div class="modal-button" style="margin-top:20px;">
+				Aggiungi tagliando
 			</div>
-		</article>
-	</div>
-</section>
+			<div class="details-modal-overlay"></div>
+		</summary>
+		<div class="details-modal">
+			<div class="details-modal-close">
+				<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711Z" fill="black" />
+				</svg>
+			</div>
+			<div class="details-modal-title">
+				<h1>Compila il form per aggiungere un tagliando</h1>
+			</div>
+			<div class="details-modal-content">
+				
+				
+				<form [formGroup]="form">
+					
+					
+					<div class="row">
+						
+						<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+							<div class="input-form">
+								<label for="officina"><b>Officina</b></label><br>
+								<input type="text" id="officina" formControlName="officina">
+							</div>
+							<div class="input-error" *ngIf="form.get('officina').invalid && (form.get('officina').dirty || form.get('officina').touched)">Campo Obbligatorio - Inserisci almeno 3 caratteri</div>
+						</div>
+						
+						<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+							<div class="input-form">
+								<label for="prezzo"><b>Prezzo</b></label><br>
+								<input type="number" id="prezzo" formControlName="prezzo">
+							</div>
+						</div>
+						
+						<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+							<div class="input-form">
+								<label for="data"><b>Data</b></label><br>
+								<input type="date" id="data" formControlName="data">
+							</div>
+							<div class="input-error" *ngIf="form.get('data').invalid && (form.get('data').dirty || form.get('data').touched)">Campo Obbligatorio</div>
+						</div>
+					
+					</div>
+					
+					
+					<div class="row">
+						
+						<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+							<div class="input-form">
+								<label for="kilometraggio"><b>Kilometraggio</b></label><br>
+								<input type="number" id="kilometraggio" formControlName="kilometraggio">
+							</div>
+							<div class="input-error" *ngIf="form.get('kilometraggio').invalid && (form.get('kilometraggio').dirty || form.get('kilometraggio').touched)">Campo obbligatorio - Esempio 55200</div>
+						</div>
+						
+						
+						<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+							<div class="input-form">
+								<label for="auto"><b>Auto</b></label><br>
+								<select name="auto" id="auto" formControlName="auto">
+									<option *ngFor="let auto of this.autoService.getAuto()" [ngValue]="auto">{{auto.marca}} {{auto.modello}}</option>
+								</select>
+							</div>
+							<div class="input-error" *ngIf="form.get('auto').invalid && (form.get('auto').dirty || form.get('auto').touched)">Campo obbligatorio</div>
+						</div>
+						
+						<div class="col-lg-4 col-sm-6" style="margin-top:10px; margin-bottom:10px">
+							<div class="input-form">
+								<label for="descrizione"><b>Descrizione intervento</b></label><br>
+								<textarea type="text" rows="2" id="descrizione" formControlName="descrizione"></textarea>
+							</div>
+							<div class="input-error" *ngIf="form.get('descrizione').invalid && (form.get('descrizione').dirty || form.get('descrizione').touched)">Campo obbligatorio - Inserisci almeno 8 caratteri</div>
+						</div>
+					
+					
+					</div>
+					
+					
+					<div class="row">
 
-</div>
+					</div>
+					
+					<button type="button" (click)="aggiungiTagliando()">AGGIUNGI TAGLIANDO</button>
+				
+				</form>
+			
+			</div>
+		</div>
+	</details>
+	
+	
+	<div *ngFor="let auto of this.autoService.getAuto()">
+		<h1 style="margin-bottom: 30px">Tagliandi di: {{auto.marca}} {{auto.modello}}</h1>
+		
+		
+		<section class="light">
+			<div class="container py-2">
+				
+				
+				<article class="postcard light blue" *ngFor="let tagliando of auto.tagliandi">
+					<div class="postcard__text t-dark">
+						<h1 class="postcard__title blue"><b>Officina:</b> {{tagliando.officina}}</h1>
+						<div class="postcard__subtitle small">
+							<img src="assets/img/date-icon.png" style="width:20px;"><time>
+								{{ tagliando.dataTagliando | date: 'dd/MM/yyyy'}}
+							</time>
+						</div>
+						<div class="postcard__bar"></div>
+						<div class="postcard__preview-txt">{{tagliando.descrizione}}</div>
+						<ul class="postcard__tagbox">
+							<li class="tag__item" *ngIf="tagliando.prezzo"><img src="assets/img/money-icon.png" style="width:20px;"> Prezzo: {{tagliando.prezzo}}€</li>
+							<li class="tag__item" *ngIf="tagliando.kilometraggio"><img src="assets/img/km-icon.png" style="width:20px;"> Kilometraggio: {{tagliando.kilometraggio}} Km</li>
+						</ul>
+					</div>
+				</article>
+
+				
+			</div>
+		</section>
+	
+	</div>
