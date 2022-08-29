@@ -21,6 +21,8 @@ export class AppComponent {
 
   ngOnInit() {
 
+
+
     this.assicurazioneService.aggiungiAssicurazione(new Assicurazione({
       dataInizioAssicurazione : new Date("2018-1-20"),
       dataFineAssicurazione : new Date("2018-7-20"),
