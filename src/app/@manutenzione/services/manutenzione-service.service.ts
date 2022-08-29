@@ -14,7 +14,7 @@ export class ManutenzioneServiceService {
     return this.listaManutenzioni;
   }
 
-  addManutenzione(manutenzione){
+  aggiungiManutenzione(manutenzione){
     this.listaManutenzioni.push(manutenzione);
   }
 

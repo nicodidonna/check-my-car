@@ -3,6 +3,8 @@ import { Assicurazione } from './@assicurazione/class/AssicurazioneClass';
 import { AssicurazioneServiceService } from './@assicurazione/services/assicurazione-service.service';
 import { Auto } from './@auto/class/AutoClass';
 import { AutoServiceService } from './@auto/services/auto-service.service';
+import { ManutenzioneStraordinaria } from './@manutenzione/class/ManutenzioneClass';
+import { ManutenzioneServiceService } from './@manutenzione/services/manutenzione-service.service';
 import { Revisione } from './@revisione/class/RevisioneClass';
 import { RevisioneServiceService } from './@revisione/services/revisione-service.service';
 import { Tagliando } from './@tagliando/class/TagliandoClass';
@@ -16,12 +18,42 @@ import { TagliandoServiceService } from './@tagliando/services/tagliando-service
 export class AppComponent {
   title = 'check-my-car';
 
-  constructor(public assicurazioneService: AssicurazioneServiceService,public revisioniService: RevisioneServiceService,public autoService: AutoServiceService, public tagliandoService: TagliandoServiceService) {
+  constructor(public manutenzioneService : ManutenzioneServiceService,public assicurazioneService: AssicurazioneServiceService,public revisioniService: RevisioneServiceService,public autoService: AutoServiceService, public tagliandoService: TagliandoServiceService) {
   }
 
   ngOnInit() {
 
+    this.manutenzioneService.aggiungiManutenzione(new ManutenzioneStraordinaria({
+      dataManutenzione: new Date("2020-2-10"),
+      prezzo: 120,
+      officina: "Carrozziere Uno",
+      descrizione: "Cambiata frizione gomma",
+      auto: this.autoService.getAuto()[0]
+    }))
 
+    this.manutenzioneService.aggiungiManutenzione(new ManutenzioneStraordinaria({
+      dataManutenzione: new Date("2016-11-11"),
+      prezzo: 260,
+      officina: "Carrozziere Due",
+      descrizione: "Cambiata cinghia",
+      auto: this.autoService.getAuto()[0]
+    }))
+
+    this.manutenzioneService.aggiungiManutenzione(new ManutenzioneStraordinaria({
+      dataManutenzione: new Date("2008-1-19"),
+      prezzo: 300,
+      officina: "Carrozziere Tre",
+      descrizione: "Sostituito paraurti",
+      auto: this.autoService.getAuto()[1]
+    }))
+
+    this.manutenzioneService.aggiungiManutenzione(new ManutenzioneStraordinaria({
+      dataManutenzione: new Date("2009-4-17"),
+      prezzo: 170,
+      officina: "Carrozziere Quattro",
+      descrizione: "Verniciato cofano",
+      auto: this.autoService.getAuto()[1]
+    }))
 
     this.assicurazioneService.aggiungiAssicurazione(new Assicurazione({
       dataInizioAssicurazione : new Date("2018-1-20"),
@@ -138,7 +170,8 @@ export class AppComponent {
         alimentazione:"Diesel",
         tagliandi: [this.tagliandoService.getTagliandi()[0],this.tagliandoService.getTagliandi()[1]],
         revisioni: [this.revisioniService.getRevisioni()[0],this.revisioniService.getRevisioni()[1]],
-        assicurazioni: [this.assicurazioneService.getAssicurazioni()[0],this.assicurazioneService.getAssicurazioni()[1]]
+        assicurazioni: [this.assicurazioneService.getAssicurazioni()[0],this.assicurazioneService.getAssicurazioni()[1]],
+        manutenzione: [this.manutenzioneService.getManutenzioni()[0],this.manutenzioneService.getManutenzioni()[1]]
       }
     ));
     
@@ -153,7 +186,8 @@ export class AppComponent {
         alimentazione: "Benzina",
         tagliandi: [this.tagliandoService.getTagliandi()[2],this.tagliandoService.getTagliandi()[3]],
         revisioni: [this.revisioniService.getRevisioni()[2],this.revisioniService.getRevisioni()[3]],
-        assicurazioni: [this.assicurazioneService.getAssicurazioni()[2],this.assicurazioneService.getAssicurazioni()[3]]
+        assicurazioni: [this.assicurazioneService.getAssicurazioni()[2],this.assicurazioneService.getAssicurazioni()[3]],
+        manutenzione: [this.manutenzioneService.getManutenzioni()[2],this.manutenzioneService.getManutenzioni()[3]]
       }
     ));
   }
