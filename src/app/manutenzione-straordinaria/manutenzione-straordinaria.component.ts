@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AutoServiceService } from '../@auto/services/auto-service.service';
 
 @Component({
   selector: 'app-manutenzione-straordinaria',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManutenzioneStraordinariaComponent implements OnInit {
 
-  constructor() { }
+  constructor(public autoService : AutoServiceService) { }
 
   ngOnInit(): void {
   }

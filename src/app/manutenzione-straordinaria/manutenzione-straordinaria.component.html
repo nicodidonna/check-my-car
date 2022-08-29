@@ -1,5 +1,40 @@
 <div class="container" style="margin-top: 15px; margin-bottom:15px">
-    <div class="main-title">
-<h1 class="text-center">INTERVENTI DI MANUTENZIONE STRAORDINARIA</h1>
-</div>
-</div>
+	
+	<!--TITOLO-->
+	<div class="main-title" style="margin-bottom: 30px">
+		<h1 class="text-center">INTERVENTI DI MANUTENZIONE STRAORDINARIA</h1>
+	</div>
+	
+	<!--MODALE-->
+	
+	
+	<!--TITOLO CARDS-->
+	<div *ngFor="let auto of this.autoService.getAuto()">
+		<h1 style="margin-bottom: 30px">Manutenzione di: {{auto.marca}} {{auto.modello}}</h1>
+		
+		<!--CARD-->
+		<section class="light">
+			<div class="container py-2">
+				
+				
+				<article class="postcard light blue" *ngFor="let manutenzione of auto.manutenzione">
+					<div class="postcard__text t-dark">
+						<h1 class="postcard__title blue"><b>Officina:</b> {{manutenzione.officina}}</h1>
+						<div class="postcard__subtitle small">
+							<img src="assets/img/date-icon.png" style="width:20px;"><time>
+								{{ manutenzione.dataManutenzione | date: 'dd/MM/yyyy'}}
+							</time>
+						</div>
+						<div class="postcard__bar"></div>
+						<div class="postcard__preview-txt">{{manutenzione.descrizione}}</div>
+						<ul class="postcard__tagbox">
+							<li class="tag__item" *ngIf="manutenzione.prezzo"><img src="assets/img/money-icon.png" style="width:20px;"> Prezzo: {{manutenzione.prezzo}}€</li>
+						</ul>
+					</div>
+				</article>
+
+				
+			</div>
+		</section>
+	
+	</div>
