@@ -41,17 +41,9 @@ export class TagliandiComponent implements OnInit {
       auto: autoSelezionata
     });
 
-    console.log("LOG VALUE DELLA SELECT:",autoSelezionata);
-    
-    
-    autoSelezionata.tagliandi.push(nuovoTagliando);
-
     if(this.form.valid){
+      autoSelezionata.tagliandi.push(nuovoTagliando);
       this.tagliandoService.aggiungiTagliando(nuovoTagliando);
-
-      console.log(this.tagliandoService.getTagliandi());
-      
-      
       this.form.reset();
     }
   }

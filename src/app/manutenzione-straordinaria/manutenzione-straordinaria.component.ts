@@ -36,8 +36,6 @@ export class ManutenzioneStraordinariaComponent implements OnInit {
       descrizione: this.capitalizeFirstLetter(this.form.controls['descrizione'].value),
       auto: autoSelezionata
     });
-
-    console.log("LOG VALUE DELLA SELECT:",autoSelezionata);
     
 
     if(this.form.valid){

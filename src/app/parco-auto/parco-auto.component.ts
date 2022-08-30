@@ -32,8 +32,7 @@ export class ParcoAutoComponent implements OnInit {
   aggiungiAuto(){
     this.checkAnnoImmatricolazione(this.form.controls['annoImmatricolazione'].value);
 
-    if(this.form.valid){
-    this.autoService.aggiungiAuto(new Auto({
+    let nuovaAuto = new Auto({
       marca: this.capitalizeFirstLetter(this.form.controls['marca'].value),
       modello: this.capitalizeFirstLetter(this.form.controls['modello'].value),
       targa: this.form.controls['targa'].value.toUpperCase(),
@@ -41,10 +40,13 @@ export class ParcoAutoComponent implements OnInit {
       cavalli: this.form.controls['cavalli'].value,
       annoImmatricolazione: this.checkAnnoImmatricolazione(this.form.controls['annoImmatricolazione'].value),
       alimentazione: this.capitalizeFirstLetter(this.form.controls['alimentazione'].value)
-    }));
+    });
 
+    if(this.form.valid){
+    this.autoService.aggiungiAuto(nuovaAuto)
     this.form.reset();
-  }
+    }
+  
   }
 
   capitalizeFirstLetter(string) {

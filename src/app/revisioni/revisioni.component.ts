@@ -32,14 +32,20 @@ export class RevisioniComponent implements OnInit {
       dataRevisione : new Date(this.form.controls['data'].value),
       dataProssimaRevisione: this.revisioneService.getProssimaRevisione(new Date(this.form.controls['data'].value)),
       prezzo: this.form.controls['prezzo'].value,
-      officina: this.form.controls['officina'].value,
+      officina: this.capitalizeFirstLetter(this.form.controls['officina'].value),
       kilometraggio: this.form.controls['kilometraggio'].value,
       auto: autoSelezionata
     });
 
+    if(this.form.valid){
     autoSelezionata.revisioni.push(nuovaRevisione);
-
+    this.revisioneService.aggiungiRevisione(nuovaRevisione);
     this.form.reset();
+    }
+  }
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
 }
