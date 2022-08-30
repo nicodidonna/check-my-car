@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AutoServiceService } from '../@auto/services/auto-service.service';
+import { ManutenzioneStraordinaria } from '../@manutenzione/class/ManutenzioneClass';
+import { ManutenzioneServiceService } from '../@manutenzione/services/manutenzione-service.service';
 
 @Component({
   selector: 'app-manutenzione-straordinaria',
@@ -9,7 +11,7 @@ import { AutoServiceService } from '../@auto/services/auto-service.service';
 })
 export class ManutenzioneStraordinariaComponent implements OnInit {
 
-  constructor(private fb : FormBuilder, public autoService : AutoServiceService) {
+  constructor(private fb : FormBuilder, public autoService : AutoServiceService, public manutenzioneService : ManutenzioneServiceService) {
     this.form = fb.group({
       officina: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
       prezzo: new FormControl("", Validators.compose([Validators.minLength(2), Validators.required])),
@@ -24,4 +26,28 @@ export class ManutenzioneStraordinariaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  aggiungiManutenzione(){
+
+    let autoSelezionata = this.form.controls['auto'].value;
+    let nuovaManutenzione = new ManutenzioneStraordinaria({
+      dataManutenzione: this.form.controls['data'].value,
+      prezzo: this.form.controls['prezzo'].value,
+      officina: this.capitalizeFirstLetter(this.form.controls['officina'].value) ,
+      descrizione: this.capitalizeFirstLetter(this.form.controls['descrizione'].value),
+      auto: autoSelezionata
+    });
+
+    console.log("LOG VALUE DELLA SELECT:",autoSelezionata);
+    
+
+    if(this.form.valid){
+      autoSelezionata.manutenzione.push(nuovaManutenzione);
+      this.manutenzioneService.aggiungiManutenzione(nuovaManutenzione);
+      this.form.reset();
+    }
+  }
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 }
