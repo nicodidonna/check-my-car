@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AutoServiceService } from '../@auto/services/auto-service.service';
 
 @Component({
@@ -9,7 +9,15 @@ import { AutoServiceService } from '../@auto/services/auto-service.service';
 })
 export class ManutenzioneStraordinariaComponent implements OnInit {
 
-  constructor(public autoService : AutoServiceService) { }
+  constructor(private fb : FormBuilder, public autoService : AutoServiceService) {
+    this.form = fb.group({
+      officina: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
+      prezzo: new FormControl("", Validators.compose([Validators.minLength(2), Validators.required])),
+      data: new FormControl("",Validators.compose([Validators.required])),
+      auto: new FormControl("", Validators.compose([Validators.required])),
+      descrizione: new FormControl("", Validators.compose([Validators.minLength(8),Validators.required]))
+    });
+   }
 
   form : FormGroup;
 
