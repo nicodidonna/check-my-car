@@ -16,15 +16,15 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 
 
-export const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: "",
-  measurementId: ""
+const firebaseConfig = {
+  apiKey: "AIzaSyBFwkRyXrIx7QELPDFBqBxBakZB0_ERiwM",
+  authDomain: "check-mycar.firebaseapp.com",
+  databaseURL: "https://check-mycar-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "check-mycar",
+  storageBucket: "check-mycar.appspot.com",
+  messagingSenderId: "980735508102",
+  appId: "1:980735508102:web:b659b57c4a80ddb1275b07",
+  measurementId: "G-C9V1TP3DCG"
 };
 
 @NgModule({
