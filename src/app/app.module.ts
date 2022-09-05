@@ -13,6 +13,7 @@ import { ManutenzioneStraordinariaComponent } from './manutenzione-straordinaria
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule} from '@angular/fire/compat'
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'; 
 
 
 
@@ -44,7 +45,8 @@ const firebaseConfig = {
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule  
+    AngularFireDatabaseModule,
+    AngularFirestoreModule  
 
   ],
   providers: [],
