@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Auto } from '../class/AutoClass';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class AutoServiceService {
 
   listaAuto : Array<Auto>=[];
 
-  constructor() { }
+  constructor(private database : AngularFirestore) { }
 
   getAuto(){
     return this.listaAuto;
