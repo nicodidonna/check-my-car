@@ -159,36 +159,6 @@ export class AppComponent {
       auto: this.autoService.getAuto()[1]
     }))
 
-    this.autoService.aggiungiAuto(new Auto(
-      {
-        marca:"Dacia",
-        modello:"Duster",
-        targa:"FA773ZR",
-        cilindrata:1.5,
-        cavalli:115,
-        annoImmatricolazione:2015,
-        alimentazione:"Diesel",
-        tagliandi: [this.tagliandoService.getTagliandi()[0],this.tagliandoService.getTagliandi()[1]],
-        revisioni: [this.revisioniService.getRevisioni()[0],this.revisioniService.getRevisioni()[1]],
-        assicurazioni: [this.assicurazioneService.getAssicurazioni()[0],this.assicurazioneService.getAssicurazioni()[1]],
-        manutenzione: [this.manutenzioneService.getManutenzioni()[0],this.manutenzioneService.getManutenzioni()[1]]
-      }
-    ));
     
-    this.autoService.aggiungiAuto(new Auto(
-      {
-        marca: "Citroen",
-        modello: "C3",
-        targa: "CK829YZ",
-        cilindrata: 1.1,
-        cavalli: 60,
-        annoImmatricolazione: 2004,
-        alimentazione: "Benzina",
-        tagliandi: [this.tagliandoService.getTagliandi()[2],this.tagliandoService.getTagliandi()[3]],
-        revisioni: [this.revisioniService.getRevisioni()[2],this.revisioniService.getRevisioni()[3]],
-        assicurazioni: [this.assicurazioneService.getAssicurazioni()[2],this.assicurazioneService.getAssicurazioni()[3]],
-        manutenzione: [this.manutenzioneService.getManutenzioni()[2],this.manutenzioneService.getManutenzioni()[3]]
-      }
-    ));
   }
 }

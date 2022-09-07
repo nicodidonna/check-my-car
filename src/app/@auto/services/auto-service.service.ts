@@ -17,6 +17,7 @@ export class AutoServiceService {
 
   aggiungiAuto(auto){
     this.listaAuto.push(auto);
+    return this.database.collection('Auto').add(JSON.parse(JSON.stringify(auto))).then(res=>{},err=>{});
   }
 
   rimuoviAuto(indiceAuto){
