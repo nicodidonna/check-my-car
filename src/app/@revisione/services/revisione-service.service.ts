@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Revisione } from '../class/RevisioneClass';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class RevisioneServiceService {
 
   listaRevisioni : Array<Revisione> = [];
 
-  constructor() { }
+  constructor(private database : AngularFirestore) { }
 
   getRevisioni(){
     return this.listaRevisioni;
@@ -16,6 +17,7 @@ export class RevisioneServiceService {
 
   aggiungiRevisione(revisione){
     this.listaRevisioni.push(revisione);
+    return this.database.collection('Revisioni').add(JSON.parse(JSON.stringify(revisione))).then(res=>{},err=>{});
   }
 
   revisioneFilter(targa){
