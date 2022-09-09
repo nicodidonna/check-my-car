@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ManutenzioneStraordinaria } from '../class/ManutenzioneClass';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class ManutenzioneServiceService {
 
   listaManutenzioni : Array<ManutenzioneStraordinaria> = []
 
-  constructor() { }
+  constructor(private database : AngularFirestore) { }
 
   getManutenzioni(){
     return this.listaManutenzioni;
@@ -16,6 +17,7 @@ export class ManutenzioneServiceService {
 
   aggiungiManutenzione(manutenzione){
     this.listaManutenzioni.push(manutenzione);
+    return this.database.collection('Manutenzioni Straordinarie').add(JSON.parse(JSON.stringify(manutenzione))).then(res=>{},err=>{});
   }
 
   manutenzioneFilter(targa){
