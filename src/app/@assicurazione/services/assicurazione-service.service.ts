@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Assicurazione } from '../class/AssicurazioneClass';
 
 @Injectable({
@@ -8,7 +9,7 @@ export class AssicurazioneServiceService {
 
   listaAssicurazioni : Array<Assicurazione> = [];
 
-  constructor() { }
+  constructor(private database : AngularFirestore) { }
 
   getAssicurazioni(){
     return this.listaAssicurazioni;
@@ -16,6 +17,7 @@ export class AssicurazioneServiceService {
 
   aggiungiAssicurazione(assicurazione){
     this.listaAssicurazioni.push(assicurazione);
+    return this.database.collection('Assicurazioni').add(JSON.parse(JSON.stringify(assicurazione))).then(res=>{},err=>{});
   }
 
   assicurazioneFilter(targa){

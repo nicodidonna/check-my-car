@@ -125,7 +125,7 @@
   <div class="row">
     
     <!--CARD-->
-    <div class="card" *ngFor="let auto of this.autoService.listaAuto">
+    <div class="card" *ngFor="let auto of this.autoService.getAuto()">
       <div class="title">{{auto.marca.toUpperCase()}} {{auto.modello.toUpperCase()}}</div>
       
       <div class="icon">

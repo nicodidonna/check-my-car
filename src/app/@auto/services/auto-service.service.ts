@@ -7,12 +7,12 @@ import { Auto } from '../class/AutoClass';
 })
 export class AutoServiceService {
 
-  listaAuto : Array<Auto>=[];
+  listaAuto = [];
 
   constructor(private database : AngularFirestore) { }
 
   getAuto(){
-    return this.listaAuto;
+     return this.listaAuto;
   }
 
   aggiungiAuto(auto){
