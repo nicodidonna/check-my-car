@@ -11,6 +11,7 @@ import { AutoServiceService } from '../@auto/services/auto-service.service';
 export class ParcoAutoComponent implements OnInit {
 
   form: FormGroup;
+  listaAuto = this.autoService.getAuto();
   
 
   constructor(private fb: FormBuilder, public autoService: AutoServiceService) {
@@ -19,7 +20,7 @@ export class ParcoAutoComponent implements OnInit {
       modello: new FormControl("", Validators.compose([Validators.minLength(2), Validators.required])),
       targa: new FormControl("",Validators.compose([Validators.pattern("^([A-Ha-h]|[K-Nk-n]|[Pp]|[R-Tr-t]|[Vv]|[X-Zx-z]){2}[1-9]{3}([A-Ha-h]|[K-Nk-n]|[Pp]|[R-Tr-t]|[Vv]|[X-Zx-z]){2}$"),Validators.required])),
       cilindrata: new FormControl("",Validators.compose([Validators.pattern('^[0-9]{3,4}$'),Validators.required])),
-      cavalli: new FormControl("", Validators.compose([Validators.pattern('^[0-9]{3,4}$'), Validators.required])),
+      cavalli: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required])),
       alimentazione: new FormControl("", Validators.compose([Validators.required])),
       annoImmatricolazione: new FormControl("", Validators.compose([Validators.minLength(3), Validators.required]))
     });
@@ -80,4 +81,5 @@ export class ParcoAutoComponent implements OnInit {
     let indiceAutoSelezionata = this.autoService.listaAuto.findIndex(x => x.targa === targa);
     this.autoService.rimuoviAuto(indiceAutoSelezionata);
   }
+
 }

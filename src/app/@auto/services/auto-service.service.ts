@@ -7,21 +7,24 @@ import { Auto } from '../class/AutoClass';
 })
 export class AutoServiceService {
 
-  listaAuto = [];
+  listaAuto;
 
   constructor(private database : AngularFirestore) { }
 
-  getAuto(){
-     return this.listaAuto;
-  }
-
   aggiungiAuto(auto){
-    this.listaAuto.push(auto);
-    return this.database.collection('Auto').add(JSON.parse(JSON.stringify(auto))).then(res=>{},err=>{});
+    this.listaAuto.push(auto)
+    this.database.collection('Auto').add(JSON.parse(JSON.stringify(auto))).then(res=>{},err=>{});
   }
 
   rimuoviAuto(indiceAuto){
     this.listaAuto.splice(indiceAuto,1);
+  }
+
+  getAuto() {
+    this.database.collection('Auto').valueChanges({ idField: 'id' }).subscribe(users => this.listaAuto=users);
+    if(this.listaAuto){
+      return this.listaAuto
+    }
   }
 
 }
