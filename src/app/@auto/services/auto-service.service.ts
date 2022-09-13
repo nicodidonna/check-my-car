@@ -12,8 +12,8 @@ export class AutoServiceService {
   constructor(private database : AngularFirestore) { }
 
   aggiungiAuto(auto){
-    this.listaAuto.push(auto)
     this.database.collection('Auto').add(JSON.parse(JSON.stringify(auto))).then(res=>{},err=>{});
+    setTimeout(()=>{window.location.reload()},2000);
   }
 
   rimuoviAuto(indiceAuto){
