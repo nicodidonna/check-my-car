@@ -20,11 +20,12 @@ export class AutoServiceService {
     this.listaAuto.splice(indiceAuto,1);
   }
 
-  getAuto() {
-    this.database.collection('Auto').valueChanges({ idField: 'id' }).subscribe(users => this.listaAuto=users);
-    if(this.listaAuto){
-      return this.listaAuto
-    }
+  getAuto1() {
+    return this.database.collection('Auto').valueChanges({ idField: 'id' })
+  }
+
+  getAuto(){
+    return []
   }
 
 }

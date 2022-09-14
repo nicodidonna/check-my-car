@@ -122,9 +122,11 @@
     </div>
   </details>
   
+  <div *ngIf="this.listaAuto">
   <div class="row">
     
     <!--CARD-->
+    
     <div class="card" *ngFor="let auto of this.listaAuto">
       <div class="title">{{auto.marca.toUpperCase()}} {{auto.modello.toUpperCase()}}</div>
       
@@ -141,8 +143,10 @@
         </ul>
       </div><!--/features-->
     
-    </div><!--/card-->
+    </div>
+  <!--/card-->
   
   </div>
+</div>
 
 </div>

@@ -11,7 +11,7 @@ import { AutoServiceService } from '../@auto/services/auto-service.service';
 export class ParcoAutoComponent implements OnInit {
 
   form: FormGroup;
-  listaAuto = this.autoService.getAuto();
+  listaAuto = [];
   
 
   constructor(private fb: FormBuilder, public autoService: AutoServiceService) {
@@ -27,6 +27,7 @@ export class ParcoAutoComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.getAuto();
   }
 
 
@@ -80,6 +81,15 @@ export class ParcoAutoComponent implements OnInit {
   rimuoviAuto(targa){
     let indiceAutoSelezionata = this.autoService.listaAuto.findIndex(x => x.targa === targa);
     this.autoService.rimuoviAuto(indiceAutoSelezionata);
+  }
+
+  getAuto(){
+    let arrAuto = [];
+    this.autoService.getAuto1().subscribe(auto => {
+      arrAuto = auto; 
+      this.listaAuto = arrAuto;
+    });
+    
   }
 
 }
