@@ -13,7 +13,8 @@ import { ManutenzioneStraordinariaComponent } from './manutenzione-straordinaria
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule} from '@angular/fire/compat'
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'; 
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component'; 
 
 
 
@@ -38,7 +39,8 @@ const firebaseConfig = {
     TagliandiComponent,
     RevisioniComponent,
     AssicurazioneBolloComponent,
-    ManutenzioneStraordinariaComponent
+    ManutenzioneStraordinariaComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ export class ParcoAutoComponent implements OnInit {
 
   form: FormGroup;
   listaAuto = [];
+  spinner : boolean = true;
   
 
   constructor(private fb: FormBuilder, public autoService: AutoServiceService) {
@@ -86,7 +87,8 @@ export class ParcoAutoComponent implements OnInit {
   getAuto(){
     let arrAuto = [];
     this.autoService.getAuto1().subscribe(auto => {
-      arrAuto = auto; 
+      arrAuto = auto;
+      
       this.listaAuto = arrAuto;
     });
     
