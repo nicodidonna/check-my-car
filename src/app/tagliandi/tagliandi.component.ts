@@ -12,6 +12,7 @@ import { TagliandoServiceService } from '../@tagliando/services/tagliando-servic
 export class TagliandiComponent implements OnInit {
 
   form: FormGroup;
+  listaAuto = [];
 
 
   constructor(private fb: FormBuilder, public autoService: AutoServiceService, public tagliandoService: TagliandoServiceService) { 
@@ -26,7 +27,7 @@ export class TagliandiComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.getAuto()
   }
 
   aggiungiTagliando(){
@@ -51,6 +52,14 @@ export class TagliandiComponent implements OnInit {
 
   capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  getAuto(){
+    let arrAuto = [];
+    this.autoService.getAuto1().subscribe(auto => {
+      arrAuto = auto;
+      this.listaAuto = arrAuto;
+    });
   }
 
 }

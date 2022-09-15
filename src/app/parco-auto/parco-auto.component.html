@@ -123,6 +123,31 @@
   </details>
   
   <app-loading-spinner *ngIf="this.spinner"></app-loading-spinner>
+  <div *ngIf="this.listaAuto">
+  <div class="row">
+    
+    <!--CARD-->
+    
+    <div class="card" *ngFor="let auto of this.listaAuto">
+      <div class="title">{{auto.marca.toUpperCase()}} {{auto.modello.toUpperCase()}}</div>
+      
+      <div class="icon">
+        <img src="assets/loghi-auto/{{auto.marca.toLowerCase()}}.png">
+      </div><!--/icon-->
+      
+      <div class="features">
+        <ul>
+          <li><b>Numero di Targa:</b> {{auto.targa}}</li>
+          <li><b>Motorizzazione:</b> {{auto.cilindrata}} {{auto.cavalli}}cv - {{auto.alimentazione}}</li>
+          <li><b>Anno di immatricolazione:</b> {{auto.annoImmatricolazione}}</li>
+          <li style="margin-top: 30px;" class="elimina-auto-button" (click)="rimuoviAuto(auto.targa)"><span>ELIMINA AUTO<br><img src="assets/img/delete.png" width="30px"></span></li>
+        </ul>
+      </div><!--/features-->
+    
+    </div>
+  <!--/card-->
   
+  </div>
+</div>
 
 </div>

@@ -88,7 +88,7 @@ export class ParcoAutoComponent implements OnInit {
     let arrAuto = [];
     this.autoService.getAuto1().subscribe(auto => {
       arrAuto = auto;
-      
+      this.spinner = false;
       this.listaAuto = arrAuto;
     });
     
