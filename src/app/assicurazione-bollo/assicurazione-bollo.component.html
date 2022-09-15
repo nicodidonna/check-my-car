@@ -93,7 +93,10 @@
             </div>
         </div>
     </details>
-    
+
+
+    <app-loading-spinner *ngIf="this.spinner"></app-loading-spinner>
+    <div *ngIf="this.listaAuto">
     <!--TITOLO CARD-->
     <div *ngFor="let auto of this.listaAuto">
         <h1 style="margin-bottom: 30px">Assicurazioni di: {{auto.marca}} {{auto.modello}}</h1>
@@ -120,6 +123,7 @@
             </div>
         </section>
     
+    </div>
     </div>
 
 </div>

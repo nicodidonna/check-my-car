@@ -13,6 +13,7 @@ export class AssicurazioneBolloComponent implements OnInit {
 
   form : FormGroup;
   listaAuto = [];
+  spinner : Boolean = true;
 
   constructor(private fb: FormBuilder, public autoService: AutoServiceService, public assicurazioneService : AssicurazioneServiceService) { 
     this.form = fb.group({
@@ -53,6 +54,7 @@ export class AssicurazioneBolloComponent implements OnInit {
     let arrAuto = [];
     this.autoService.getAuto1().subscribe(auto => {
       arrAuto = auto;
+      this.spinner = false;
       this.listaAuto = arrAuto;
     });
   }
