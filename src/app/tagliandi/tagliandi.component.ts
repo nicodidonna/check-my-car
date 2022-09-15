@@ -13,6 +13,7 @@ export class TagliandiComponent implements OnInit {
 
   form: FormGroup;
   listaAuto = [];
+  spinner : Boolean = true;
 
 
   constructor(private fb: FormBuilder, public autoService: AutoServiceService, public tagliandoService: TagliandoServiceService) { 
@@ -58,6 +59,7 @@ export class TagliandiComponent implements OnInit {
     let arrAuto = [];
     this.autoService.getAuto1().subscribe(auto => {
       arrAuto = auto;
+      this.spinner = false;
       this.listaAuto = arrAuto;
     });
   }
