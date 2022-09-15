@@ -12,6 +12,7 @@ import { RevisioneServiceService } from '../@revisione/services/revisione-servic
 export class RevisioniComponent implements OnInit {
 
   form : FormGroup;
+  listaAuto = [];
 
   constructor(private fb: FormBuilder, public autoService : AutoServiceService, public revisioneService : RevisioneServiceService) { 
     this.form = fb.group({
@@ -24,6 +25,7 @@ export class RevisioniComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAuto();
   }
 
   aggiungiRevisione(){
@@ -46,6 +48,14 @@ export class RevisioniComponent implements OnInit {
 
   capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  getAuto(){
+    let arrAuto = [];
+    this.autoService.getAuto1().subscribe(auto => {
+      arrAuto = auto;
+      this.listaAuto = arrAuto;
+    });
   }
 
 }
