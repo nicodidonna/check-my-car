@@ -12,6 +12,7 @@ import { AutoServiceService } from '../@auto/services/auto-service.service';
 export class AssicurazioneBolloComponent implements OnInit {
 
   form : FormGroup;
+  listaAuto = [];
 
   constructor(private fb: FormBuilder, public autoService: AutoServiceService, public assicurazioneService : AssicurazioneServiceService) { 
     this.form = fb.group({
@@ -24,6 +25,7 @@ export class AssicurazioneBolloComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAuto();
   }
 
   aggiungiAssicurazione(){
@@ -45,6 +47,14 @@ export class AssicurazioneBolloComponent implements OnInit {
 
   capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  getAuto(){
+    let arrAuto = [];
+    this.autoService.getAuto1().subscribe(auto => {
+      arrAuto = auto;
+      this.listaAuto = arrAuto;
+    });
   }
 
 

@@ -74,7 +74,7 @@
                             <div class="input-form">
                                 <label for="auto"><b>Auto</b></label><br>
                                 <select name="auto" id="auto" formControlName="auto">
-                                    <option *ngFor="let auto of this.autoService.getAuto()" [ngValue]="auto">{{auto.marca}} {{auto.modello}}</option>
+                                    <option *ngFor="let auto of this.listaAuto" [ngValue]="auto">{{auto.marca}} {{auto.modello}}</option>
                                 </select>
                             </div>
                             <div class="input-error" *ngIf="form.get('auto').invalid && (form.get('auto').dirty || form.get('auto').touched)">Campo obbligatorio</div>
@@ -95,7 +95,7 @@
     </details>
     
     <!--TITOLO CARD-->
-    <div *ngFor="let auto of this.autoService.getAuto()">
+    <div *ngFor="let auto of this.listaAuto">
         <h1 style="margin-bottom: 30px">Assicurazioni di: {{auto.marca}} {{auto.modello}}</h1>
         
         <!--CARDS-->
