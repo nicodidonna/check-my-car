@@ -22,8 +22,10 @@ export class ManutenzioneStraordinariaComponent implements OnInit {
    }
 
   form : FormGroup;
+  listaAuto = [];
 
   ngOnInit(): void {
+    this.getAuto()
   }
 
   aggiungiManutenzione(){
@@ -47,5 +49,13 @@ export class ManutenzioneStraordinariaComponent implements OnInit {
 
   capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  getAuto(){
+    let arrAuto = [];
+    this.autoService.getAuto1().subscribe(auto => {
+      arrAuto = auto;
+      this.listaAuto = arrAuto;
+    });
   }
 }
