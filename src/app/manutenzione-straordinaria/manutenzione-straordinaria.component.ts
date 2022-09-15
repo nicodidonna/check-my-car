@@ -23,6 +23,7 @@ export class ManutenzioneStraordinariaComponent implements OnInit {
 
   form : FormGroup;
   listaAuto = [];
+  spinner : Boolean = true;
 
   ngOnInit(): void {
     this.getAuto()
@@ -55,6 +56,7 @@ export class ManutenzioneStraordinariaComponent implements OnInit {
     let arrAuto = [];
     this.autoService.getAuto1().subscribe(auto => {
       arrAuto = auto;
+      this.spinner = false;
       this.listaAuto = arrAuto;
     });
   }
