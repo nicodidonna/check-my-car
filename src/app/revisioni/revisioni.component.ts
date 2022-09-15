@@ -13,6 +13,7 @@ export class RevisioniComponent implements OnInit {
 
   form : FormGroup;
   listaAuto = [];
+  spinner : Boolean = true;
 
   constructor(private fb: FormBuilder, public autoService : AutoServiceService, public revisioneService : RevisioneServiceService) { 
     this.form = fb.group({
@@ -54,6 +55,7 @@ export class RevisioniComponent implements OnInit {
     let arrAuto = [];
     this.autoService.getAuto1().subscribe(auto => {
       arrAuto = auto;
+      this.spinner = false;
       this.listaAuto = arrAuto;
     });
   }
