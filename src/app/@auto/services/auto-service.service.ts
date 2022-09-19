@@ -16,16 +16,13 @@ export class AutoServiceService {
     setTimeout(()=>{window.location.reload()},2000);
   }
 
-  rimuoviAuto(indiceAuto){
-    this.listaAuto.splice(indiceAuto,1);
+  rimuoviAuto(idAuto){
+    return this.database.collection('Auto').doc(idAuto).delete()
   }
 
   getAuto1() {
-    return this.database.collection('Auto').valueChanges({ idField: 'id' })
-  }
-
-  getAuto(){
-    return []
+    return this.database.collection('Auto').valueChanges({ idField: 'id' });
+    
   }
 
 }

@@ -79,19 +79,18 @@ export class ParcoAutoComponent implements OnInit {
     }
   }
 
-  rimuoviAuto(targa){
-    let indiceAutoSelezionata = this.autoService.listaAuto.findIndex(x => x.targa === targa);
-    this.autoService.rimuoviAuto(indiceAutoSelezionata);
+  rimuoviAuto(id){
+    this.autoService.rimuoviAuto(id).then(res => console.log(res));
   }
 
   getAuto(){
     let arrAuto = [];
     this.autoService.getAuto1().subscribe(auto => {
+      console.log(auto);
       arrAuto = auto;
       this.spinner = false;
       this.listaAuto = arrAuto;
     });
-    
   }
 
 }
