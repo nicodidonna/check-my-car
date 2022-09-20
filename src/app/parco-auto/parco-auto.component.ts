@@ -42,7 +42,12 @@ export class ParcoAutoComponent implements OnInit {
       cilindrata: this.setCilindrata(this.form.controls['cilindrata'].value/1000),
       cavalli: this.form.controls['cavalli'].value,
       annoImmatricolazione: this.checkAnnoImmatricolazione(this.form.controls['annoImmatricolazione'].value),
-      alimentazione: this.capitalizeFirstLetter(this.form.controls['alimentazione'].value)
+      alimentazione: this.capitalizeFirstLetter(this.form.controls['alimentazione'].value),
+      tagliandi : [],
+      revisioni : [],
+      assicurazioni : [],
+      bolli : [],
+      manutenzione : []
     });
 
     if(this.form.valid){
