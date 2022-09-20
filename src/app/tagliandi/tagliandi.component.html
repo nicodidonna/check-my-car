@@ -76,7 +76,7 @@
 							<div class="input-form">
 								<label for="auto"><b>Auto</b></label><br>
 								<select name="auto" id="auto" formControlName="auto">
-									<option *ngFor="let auto of this.listaAuto" [ngValue]="auto">{{auto.marca}} {{auto.modello}}</option>
+									<option *ngFor="let auto of this.listaAuto" [ngValue]="auto.id">{{auto.marca}} {{auto.modello}}</option>
 								</select>
 							</div>
 							<div class="input-error" *ngIf="form.get('auto').invalid && (form.get('auto').dirty || form.get('auto').touched)">Campo obbligatorio</div>
@@ -117,7 +117,7 @@
 			<div class="container py-2">
 				
 				
-				<article class="postcard light blue" *ngFor="let tagliando of auto.tagliandi">
+				<article class="postcard light blue" *ngFor="let tagliando of listaTagliandi">
 					<div class="postcard__text t-dark">
 						<h1 class="postcard__title blue"><b>Officina:</b> {{tagliando.officina}}</h1>
 						<div class="postcard__subtitle small">

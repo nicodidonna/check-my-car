@@ -14,6 +14,7 @@ export class TagliandiComponent implements OnInit {
   form: FormGroup;
   listaAuto = [];
   spinner : Boolean = true;
+  listaTagliandi = [];
 
 
   constructor(private fb: FormBuilder, public autoService: AutoServiceService, public tagliandoService: TagliandoServiceService) { 
@@ -28,24 +29,23 @@ export class TagliandiComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAuto()
+    this.getAuto();
+    this.getTagliando();
   }
 
   aggiungiTagliando(){
 
-    let autoSelezionata = this.form.controls['auto'].value;
-    let nuovoTagliando = new Tagliando({
+    let idAutoSelezionata = this.form.controls['auto'].value;
+    let nuovoTagliando = {
       dataTagliando: this.form.controls['data'].value,
       prezzo: this.form.controls['prezzo'].value,
       officina: this.capitalizeFirstLetter(this.form.controls['officina'].value) ,
       descrizione: this.capitalizeFirstLetter(this.form.controls['descrizione'].value),
       kilometraggio:this.form.controls['kilometraggio'].value,
-      auto: autoSelezionata
-    });
+    }
 
     if(this.form.valid){
-      autoSelezionata.tagliandi.push(nuovoTagliando);
-      this.tagliandoService.aggiungiTagliando(nuovoTagliando);
+      this.tagliandoService.aggiungiTagliando(nuovoTagliando, idAutoSelezionata);
       this.form.reset();
     }
   }
@@ -61,6 +61,12 @@ export class TagliandiComponent implements OnInit {
       arrAuto = auto;
       this.spinner = false;
       this.listaAuto = arrAuto;
+    });
+  }
+
+  getTagliando(){
+    this.tagliandoService.getTagliandi("UifPn8kVDPiMjL41UjAm").subscribe(tagliandi=>{
+      this.listaTagliandi = tagliandi;
     });
   }
 

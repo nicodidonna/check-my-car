@@ -22,7 +22,6 @@ export class AutoServiceService {
 
   getAuto1() {
     return this.database.collection('Auto').valueChanges({ idField: 'id' });
-    
   }
 
 }

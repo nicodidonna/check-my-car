@@ -11,17 +11,13 @@ export class TagliandoServiceService {
 
   constructor(private database : AngularFirestore) { }
 
-  getTagliandi(){
-    return this.listaTagliandi;
+  getTagliandi(idAuto){
+    return this.database.collection("Auto/"+idAuto+"/tagliandi").valueChanges({ idField: 'id' })
   }
 
-  aggiungiTagliando(tagliando){
-    this.listaTagliandi.push(tagliando);
-    return this.database.collection('Tagliandi').add(JSON.parse(JSON.stringify(tagliando))).then(res=>{},err=>{});
+  aggiungiTagliando(tagliando, idAuto){
+    this.database.collection('Auto').doc(idAuto).collection('tagliandi').add(JSON.parse(JSON.stringify(tagliando))).then(res=>{},err=>{});
+    setTimeout(()=>{window.location.reload()},2000);
   }
 
-  tagliandiFilter(targa){
-     return this.getTagliandi().filter(
-      (tagliando) => {tagliando.auto.targa == targa});
-  }
 }
