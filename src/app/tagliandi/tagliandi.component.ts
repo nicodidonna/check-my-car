@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgIterable, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AutoServiceService } from '../@auto/services/auto-service.service';
 import { Tagliando } from '../@tagliando/class/TagliandoClass';
@@ -30,7 +30,6 @@ export class TagliandiComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAuto();
-    this.getTagliando();
   }
 
   aggiungiTagliando(){
@@ -64,9 +63,10 @@ export class TagliandiComponent implements OnInit {
     });
   }
 
-  getTagliando(){
-    this.tagliandoService.getTagliandi("UifPn8kVDPiMjL41UjAm").subscribe(tagliandi=>{
+  getTagliandi(idAuto) {
+    this.tagliandoService.getTagliandi(idAuto).subscribe(tagliandi=>{
       this.listaTagliandi = tagliandi;
+      console.log("OOOO",tagliandi);
     });
   }
 
