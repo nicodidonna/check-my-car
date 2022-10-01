@@ -1,7 +1,6 @@
-import { Component, NgIterable, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AutoServiceService } from '../@auto/services/auto-service.service';
-import { Tagliando } from '../@tagliando/class/TagliandoClass';
 import { TagliandoServiceService } from '../@tagliando/services/tagliando-service.service';
 
 @Component({
@@ -41,6 +40,7 @@ export class TagliandiComponent implements OnInit {
       officina: this.capitalizeFirstLetter(this.form.controls['officina'].value) ,
       descrizione: this.capitalizeFirstLetter(this.form.controls['descrizione'].value),
       kilometraggio:this.form.controls['kilometraggio'].value,
+      idAuto: idAutoSelezionata
     }
 
     if(this.form.valid){
@@ -58,16 +58,28 @@ export class TagliandiComponent implements OnInit {
     let arrAuto = [];
     this.autoService.getAuto1().subscribe(auto => {
       arrAuto = auto;
-      this.spinner = false;
       this.listaAuto = arrAuto;
+      this.fillListaTagliandi();
+      this.spinner = false;
     });
   }
 
-  getTagliandi(idAuto) {
-    this.tagliandoService.getTagliandi(idAuto).subscribe(tagliandi=>{
-      this.listaTagliandi = tagliandi;
-      console.log("OOOO",tagliandi);
+  getTagliandiAuto(idAuto) : any{
+    this.tagliandoService.getTagliandi(idAuto).subscribe(tagliandiAutoSelezionata=>{
+      if(tagliandiAutoSelezionata.length > 0){
+        tagliandiAutoSelezionata.forEach(element => {
+          this.listaTagliandi.push(element);
+        });
+      }
     });
+  }
+
+  fillListaTagliandi(){
+    if(this.listaAuto){
+      this.listaAuto.forEach(auto => {
+        this.getTagliandiAuto(auto.id);
+      });
+    }
   }
 
 }

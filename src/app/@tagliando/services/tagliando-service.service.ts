@@ -19,5 +19,6 @@ export class TagliandoServiceService {
     this.database.collection('Auto').doc(idAuto).collection('tagliandi').add(JSON.parse(JSON.stringify(tagliando))).then(res=>{},err=>{});
     setTimeout(()=>{window.location.reload()},2000);
   }
+  
 
 }
