@@ -14,6 +14,7 @@ export class RevisioniComponent implements OnInit {
   form : FormGroup;
   listaAuto = [];
   spinner : Boolean = true;
+  listaRevisioni = [];
 
   constructor(private fb: FormBuilder, public autoService : AutoServiceService, public revisioneService : RevisioneServiceService) { 
     this.form = fb.group({
@@ -30,19 +31,18 @@ export class RevisioniComponent implements OnInit {
   }
 
   aggiungiRevisione(){
-    let autoSelezionata = this.form.controls['auto'].value;
-    let nuovaRevisione = new Revisione({
+    let idAutoSelezionata = this.form.controls['auto'].value;
+    let nuovaRevisione = {
       dataRevisione : new Date(this.form.controls['data'].value),
       dataProssimaRevisione: this.revisioneService.getProssimaRevisione(new Date(this.form.controls['data'].value)),
       prezzo: this.form.controls['prezzo'].value,
       officina: this.capitalizeFirstLetter(this.form.controls['officina'].value),
       kilometraggio: this.form.controls['kilometraggio'].value,
-      auto: autoSelezionata
-    });
+      idAuto: idAutoSelezionata
+    };
 
     if(this.form.valid){
-    autoSelezionata.revisioni.push(nuovaRevisione);
-    this.revisioneService.aggiungiRevisione(nuovaRevisione);
+    this.revisioneService.aggiungiRevisione(nuovaRevisione, idAutoSelezionata);
     this.form.reset();
     }
   }
@@ -55,9 +55,28 @@ export class RevisioniComponent implements OnInit {
     let arrAuto = [];
     this.autoService.getAuto1().subscribe(auto => {
       arrAuto = auto;
-      this.spinner = false;
       this.listaAuto = arrAuto;
+      this.fillListaRevisioni();
+      this.spinner = false;
     });
+  }
+
+  getRevisioniAuto(idAuto) : any{
+    this.revisioneService.getRevisioni(idAuto).subscribe(revisioniAutoSelezionata=>{
+      if(revisioniAutoSelezionata.length > 0){
+        revisioniAutoSelezionata.forEach(element => {
+          this.listaRevisioni.push(element);
+        });
+      }
+    });
+  }
+
+  fillListaRevisioni(){
+    if(this.listaAuto){
+      this.listaAuto.forEach(auto => {
+        this.getRevisioniAuto(auto.id);
+      });
+    }
   }
 
 }

@@ -11,18 +11,13 @@ export class RevisioneServiceService {
 
   constructor(private database : AngularFirestore) { }
 
-  getRevisioni(){
-    return this.listaRevisioni;
+  getRevisioni(idAuto){
+    return this.database.collection("Auto/"+idAuto+"/revisioni").valueChanges({ idField: 'id' })
   }
 
-  aggiungiRevisione(revisione){
-    this.listaRevisioni.push(revisione);
-    return this.database.collection('Revisioni').add(JSON.parse(JSON.stringify(revisione))).then(res=>{},err=>{});
-  }
-
-  revisioneFilter(targa){
-      return this.getRevisioni().filter(
-       (revisione) => {revisione.auto.targa == targa});
+  aggiungiRevisione(revisione, idAuto){
+    this.database.collection('Auto').doc(idAuto).collection('revisioni').add(JSON.parse(JSON.stringify(revisione))).then(res=>{},err=>{});
+    setTimeout(()=>{window.location.reload()},2000);
   }
 
   getProssimaRevisione(dataRevisione){
