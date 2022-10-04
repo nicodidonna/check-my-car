@@ -11,17 +11,13 @@ export class AssicurazioneServiceService {
 
   constructor(private database : AngularFirestore) { }
 
-  getAssicurazioni(){
-    return this.listaAssicurazioni;
+  getAssicurazioni(idAuto){
+    return this.database.collection("Auto/"+idAuto+"/assicurazioni").valueChanges({ idField: 'id' })
   }
 
-  aggiungiAssicurazione(assicurazione){
-    this.listaAssicurazioni.push(assicurazione);
-    return this.database.collection('Assicurazioni').add(JSON.parse(JSON.stringify(assicurazione))).then(res=>{},err=>{});
+  aggiungiAssicurazione(assicurazione, idAuto){
+    this.database.collection('Auto').doc(idAuto).collection('assicurazioni').add(JSON.parse(JSON.stringify(assicurazione))).then(res=>{},err=>{});
+    setTimeout(()=>{window.location.reload()},2000);
   }
 
-  assicurazioneFilter(targa){
-    return this.getAssicurazioni().filter(
-     (assicurazione) => {assicurazione.auto.targa == targa});
-    }
 }

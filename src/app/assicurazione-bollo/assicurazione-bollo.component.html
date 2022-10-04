@@ -2,7 +2,7 @@
     
     <!--TITOLO-->
     <div class="main-title">
-        <h1 class="text-center">INFORMAZIONI SU ASSICURAZIONE E BOLLO</h1>
+        <h1 class="text-center">STORICO ASSICURAZIONI</h1>
     </div>
     
     
@@ -74,7 +74,7 @@
                             <div class="input-form">
                                 <label for="auto"><b>Auto</b></label><br>
                                 <select name="auto" id="auto" formControlName="auto">
-                                    <option *ngFor="let auto of this.listaAuto" [ngValue]="auto">{{auto.marca}} {{auto.modello}}</option>
+                                    <option *ngFor="let auto of this.listaAuto" [ngValue]="auto.id">{{auto.marca}} {{auto.modello}}</option>
                                 </select>
                             </div>
                             <div class="input-error" *ngIf="form.get('auto').invalid && (form.get('auto').dirty || form.get('auto').touched)">Campo obbligatorio</div>
@@ -105,7 +105,8 @@
         <section class="light">
             <div class="container py-2">
                 
-                <article class="postcard light blue" *ngFor="let assicurazione of auto.assicurazioni">
+                <div *ngFor="let assicurazione of listaAssicurazioni">
+                <article class="postcard light blue" *ngIf="assicurazione.idAuto == auto.id">
                     <div class="postcard__text t-dark">
                         <h1 class="postcard__title blue"><b>Agenzia Assicurativa:</b> {{assicurazione.agenzia}}</h1>
                         <div class="postcard__subtitle small">
@@ -120,6 +121,8 @@
                         </ul>
                     </div>
                 </article>
+                </div>
+
             </div>
         </section>
     

@@ -14,6 +14,7 @@ export class AssicurazioneBolloComponent implements OnInit {
   form : FormGroup;
   listaAuto = [];
   spinner : Boolean = true;
+  listaAssicurazioni = [];
 
   constructor(private fb: FormBuilder, public autoService: AutoServiceService, public assicurazioneService : AssicurazioneServiceService) { 
     this.form = fb.group({
@@ -30,18 +31,17 @@ export class AssicurazioneBolloComponent implements OnInit {
   }
 
   aggiungiAssicurazione(){
-    let autoSelezionata = this.form.controls['auto'].value;
-    let nuovaAssicurazione = new Assicurazione({
+    let idAutoSelezionata = this.form.controls['auto'].value;
+    let nuovaAssicurazione = {
       dataInizioAssicurazione : new Date(this.form.controls['datainizio'].value),
       dataFineAssicurazione : new Date(this.form.controls['datafine'].value),
       prezzo : this.form.controls['prezzo'].value,
       agenzia : this.capitalizeFirstLetter(this.form.controls['agenzia'].value),
-      auto : autoSelezionata
-    })
+      idAuto : idAutoSelezionata
+    };
 
     if(this.form.valid){
-    autoSelezionata.assicurazioni.push(nuovaAssicurazione);
-    this.assicurazioneService.aggiungiAssicurazione(nuovaAssicurazione);
+    this.assicurazioneService.aggiungiAssicurazione(nuovaAssicurazione, idAutoSelezionata);
     this.form.reset();
     }
   }
@@ -54,9 +54,28 @@ export class AssicurazioneBolloComponent implements OnInit {
     let arrAuto = [];
     this.autoService.getAuto1().subscribe(auto => {
       arrAuto = auto;
-      this.spinner = false;
       this.listaAuto = arrAuto;
+      this.fillListaAssicurazioni();
+      this.spinner = false;
     });
+  }
+
+  getAssicurazioniAuto(idAuto) : any{
+    this.assicurazioneService.getAssicurazioni(idAuto).subscribe(assicurazioniAutoSelezionata=>{
+      if(assicurazioniAutoSelezionata.length > 0){
+        assicurazioniAutoSelezionata.forEach(element => {
+          this.listaAssicurazioni.push(element);
+        });
+      }
+    });
+  }
+
+  fillListaAssicurazioni(){
+    if(this.listaAuto){
+      this.listaAuto.forEach(auto => {
+        this.getAssicurazioniAuto(auto.id);
+      });
+    }
   }
 
 
