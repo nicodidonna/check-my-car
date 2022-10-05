@@ -82,4 +82,8 @@ export class TagliandiComponent implements OnInit {
     }
   }
 
+  rimuoviTagliando(idTagliando, idAuto){
+    this.tagliandoService.rimuoviTagliando(idTagliando,idAuto).then(res => {window.location.reload()});
+  }
+
 }

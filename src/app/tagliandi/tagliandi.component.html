@@ -119,6 +119,7 @@
 				<div *ngFor="let tagliando of listaTagliandi">
 					<article class="postcard light blue" *ngIf="tagliando.idAuto == auto.id">
 						<div class="postcard__text t-dark">
+							
 							<h1 class="postcard__title blue"><b>Officina:</b> {{tagliando.officina}}</h1>
 							<div class="postcard__subtitle small">
 								<img src="assets/img/date-icon.png" style="width:20px;">
@@ -131,6 +132,7 @@
 							<ul class="postcard__tagbox">
 								<li class="tag__item" *ngIf="tagliando.prezzo"><img src="assets/img/money-icon.png" style="width:20px;"> Prezzo: {{tagliando.prezzo}}€</li>
 								<li class="tag__item" *ngIf="tagliando.kilometraggio"><img src="assets/img/km-icon.png" style="width:20px;"> Kilometraggio: {{tagliando.kilometraggio}} Km</li>
+								<li class="tag__item2" (click)="rimuoviTagliando(tagliando.id, auto.id)"><img src="assets/img/delete-icon.png" style="width:20px;"> Cancella tagliando</li>
 							</ul>
 						</div>
 					</article>

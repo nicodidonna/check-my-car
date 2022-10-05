@@ -16,8 +16,11 @@ export class TagliandoServiceService {
   }
 
   aggiungiTagliando(tagliando, idAuto){
-    this.database.collection('Auto').doc(idAuto).collection('tagliandi').add(JSON.parse(JSON.stringify(tagliando))).then(res=>{},err=>{});
-    setTimeout(()=>{window.location.reload()},2000);
+    this.database.collection('Auto').doc(idAuto).collection('tagliandi').add(JSON.parse(JSON.stringify(tagliando))).then(res=>{window.location.reload()},err=>{});
+  }
+
+  rimuoviTagliando(idTagliando, idAuto){
+    return this.database.collection('Auto').doc(idAuto).collection('tagliandi').doc(idTagliando).delete()
   }
   
 
