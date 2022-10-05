@@ -24,6 +24,7 @@ export class ManutenzioneStraordinariaComponent implements OnInit {
   form : FormGroup;
   listaAuto = [];
   spinner : Boolean = true;
+  listaManutenzioni = [];
 
   ngOnInit(): void {
     this.getAuto()
@@ -31,19 +32,18 @@ export class ManutenzioneStraordinariaComponent implements OnInit {
 
   aggiungiManutenzione(){
 
-    let autoSelezionata = this.form.controls['auto'].value;
-    let nuovaManutenzione = new ManutenzioneStraordinaria({
+    let idAutoSelezionata = this.form.controls['auto'].value;
+    let nuovaManutenzione = {
       dataManutenzione: this.form.controls['data'].value,
       prezzo: this.form.controls['prezzo'].value,
       officina: this.capitalizeFirstLetter(this.form.controls['officina'].value) ,
       descrizione: this.capitalizeFirstLetter(this.form.controls['descrizione'].value),
-      auto: autoSelezionata
-    });
+      idAuto: idAutoSelezionata
+    };
     
 
     if(this.form.valid){
-      autoSelezionata.manutenzione.push(nuovaManutenzione);
-      this.manutenzioneService.aggiungiManutenzione(nuovaManutenzione);
+      this.manutenzioneService.aggiungiManutenzione(nuovaManutenzione, idAutoSelezionata);
       this.form.reset();
     }
   }
@@ -56,8 +56,28 @@ export class ManutenzioneStraordinariaComponent implements OnInit {
     let arrAuto = [];
     this.autoService.getAuto1().subscribe(auto => {
       arrAuto = auto;
-      this.spinner = false;
       this.listaAuto = arrAuto;
+      this.fillListaManutenzioni();
+      this.spinner = false;
     });
   }
+
+  getManutenzioniAuto(idAuto) : any{
+    this.manutenzioneService.getManutenzioni(idAuto).subscribe(manutenzioniAutoSelezionata=>{
+      if(manutenzioniAutoSelezionata.length > 0){
+        manutenzioniAutoSelezionata.forEach(element => {
+          this.listaManutenzioni.push(element);
+        });
+      }
+    });
+  }
+
+  fillListaManutenzioni(){
+    if(this.listaAuto){
+      this.listaAuto.forEach(auto => {
+        this.getManutenzioniAuto(auto.id);
+      });
+    }
+  }
+
 }

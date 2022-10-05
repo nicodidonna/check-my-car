@@ -11,17 +11,13 @@ export class ManutenzioneServiceService {
 
   constructor(private database : AngularFirestore) { }
 
-  getManutenzioni(){
-    return this.listaManutenzioni;
+  getManutenzioni(idAuto){
+    return this.database.collection("Auto/"+idAuto+"/manutenzioni").valueChanges({ idField: 'id' })
   }
 
-  aggiungiManutenzione(manutenzione){
-    this.listaManutenzioni.push(manutenzione);
-    return this.database.collection('Manutenzioni Straordinarie').add(JSON.parse(JSON.stringify(manutenzione))).then(res=>{},err=>{});
+  aggiungiManutenzione(manutenzione, idAuto){
+    this.database.collection('Auto').doc(idAuto).collection('manutenzioni').add(JSON.parse(JSON.stringify(manutenzione))).then(res=>{},err=>{});
+    setTimeout(()=>{window.location.reload()},2000);
   }
-
-  manutenzioneFilter(targa){
-    return this.getManutenzioni().filter(
-      (manutenzione) => {manutenzione.auto.targa == targa});
-  }
+  
 }
