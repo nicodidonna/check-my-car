@@ -78,6 +78,8 @@ export class AssicurazioneBolloComponent implements OnInit {
     }
   }
 
-
+  rimuoviAssicurazione(idAssicurazione, idAuto){
+    this.assicurazioneService.rimuoviAssicurazione(idAssicurazione,idAuto).then(res => {window.location.reload()});
+  }
 
 }

@@ -20,4 +20,8 @@ export class AssicurazioneServiceService {
     setTimeout(()=>{window.location.reload()},2000);
   }
 
+  rimuoviAssicurazione(idAssicurazione, idAuto){
+    return this.database.collection('Auto').doc(idAuto).collection('assicurazioni').doc(idAssicurazione).delete()
+  }
+
 }

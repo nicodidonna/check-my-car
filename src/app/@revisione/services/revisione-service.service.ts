@@ -29,7 +29,7 @@ export class RevisioneServiceService {
   }
 
   rimuoviRevisione(idRevisione, idAuto){
-    return this.database.collection('Auto').doc(idAuto).collection('revisione').doc(idRevisione).delete()
+    return this.database.collection('Auto').doc(idAuto).collection('revisioni').doc(idRevisione).delete()
   }
 
 }
