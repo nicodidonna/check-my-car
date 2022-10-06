@@ -119,6 +119,7 @@
 						<div class="postcard__preview-txt">{{manutenzione.descrizione}}</div>
 						<ul class="postcard__tagbox">
 							<li class="tag__item" *ngIf="manutenzione.prezzo"><img src="assets/img/money-icon.png" style="width:20px;"> Prezzo: {{manutenzione.prezzo}}€</li>
+							<li class="tag__item2" (click)="rimuoviManutenzione(manutenzione.id, auto.id)"><img src="assets/img/delete-icon.png" style="width:20px;"> Cancella manutenzione</li>
 						</ul>
 					</div>
 				</article>

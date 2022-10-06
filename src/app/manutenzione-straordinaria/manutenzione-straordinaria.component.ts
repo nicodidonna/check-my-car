@@ -80,4 +80,8 @@ export class ManutenzioneStraordinariaComponent implements OnInit {
     }
   }
 
+  rimuoviManutenzione(idManutenzione, idAuto){
+    this.manutenzioneService.rimuoviManutenzione(idManutenzione,idAuto).then(res => {window.location.reload()});
+  }
+
 }

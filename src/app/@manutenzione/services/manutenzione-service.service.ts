@@ -19,5 +19,9 @@ export class ManutenzioneServiceService {
     this.database.collection('Auto').doc(idAuto).collection('manutenzioni').add(JSON.parse(JSON.stringify(manutenzione))).then(res=>{},err=>{});
     setTimeout(()=>{window.location.reload()},2000);
   }
+
+  rimuoviManutenzione(idManutenzione, idAuto){
+    return this.database.collection('Auto').doc(idAuto).collection('manutenzioni').doc(idManutenzione).delete()
+  }
   
 }
