@@ -79,4 +79,8 @@ export class RevisioniComponent implements OnInit {
     }
   }
 
+  rimuoviRevisione(idRevisione, idAuto){
+    this.revisioneService.rimuoviRevisione(idRevisione,idAuto).then(res => {window.location.reload()});
+  }
+
 }

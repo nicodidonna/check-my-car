@@ -27,4 +27,9 @@ export class RevisioneServiceService {
     let nuovaData = new Date(anno + 2, mese, giorno);
     return nuovaData;
   }
+
+  rimuoviRevisione(idRevisione, idAuto){
+    return this.database.collection('Auto').doc(idAuto).collection('revisione').doc(idRevisione).delete()
+  }
+
 }
