@@ -102,6 +102,7 @@
   <div *ngIf="this.listaAuto">
   <!--TITOLO CARDS-->
   <div *ngFor="let auto of this.listaAuto">
+    <div *ngIf="!auto.hasNotRevisioni">
     <h1 style="margin-bottom: 30px">Revisioni di: {{auto.marca}} {{auto.modello}}</h1>
     
     <!--CARD-->
@@ -131,6 +132,7 @@
       </div>
     </section>
   
+  </div>
   </div>
   </div>
 

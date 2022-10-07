@@ -67,6 +67,12 @@ export class RevisioniComponent implements OnInit {
         revisioniAutoSelezionata.forEach(element => {
           this.listaRevisioni.push(element);
         });
+      }else { //controlla se NON ci sono revisioni
+        this.listaAuto.forEach(element => { //cicla lista di Auto
+          if (element.id == idAuto) { //controlla che l'auto ciclata corisponda a quella selezionata
+            element.hasNotRevisioni = true; //aggiunge una proprietà che è true quando l'auto NON ha revisioni
+          }
+        })
       }
     });
   }
