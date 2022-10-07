@@ -110,6 +110,7 @@
   	<div *ngIf="this.listaAuto">
 	<!--TITOLO CARDS-->
 	<div *ngFor="let auto of this.listaAuto">
+		<div *ngIf="!auto.hasNotTagliandi">
 		<h1 style="margin-bottom: 30px">Tagliandi di: {{auto.marca}} {{auto.modello}}</h1>
 		
 		<!--CARD-->
@@ -142,4 +143,5 @@
 		</section>
 	
 	</div>
+</div>
 </div>

@@ -65,11 +65,17 @@ export class TagliandiComponent implements OnInit {
   }
 
   getTagliandiAuto(idAuto) : any{
-    this.tagliandoService.getTagliandi(idAuto).subscribe(tagliandiAutoSelezionata=>{
-      if(tagliandiAutoSelezionata.length > 0){
-        tagliandiAutoSelezionata.forEach(element => {
-          this.listaTagliandi.push(element);
+    this.tagliandoService.getTagliandi(idAuto).subscribe(tagliandiAutoSelezionata=>{ //get tagliandi from db
+      if(tagliandiAutoSelezionata.length > 0){ //controlla che ci siano tagliandi per l'auto ciclata
+        tagliandiAutoSelezionata.forEach(element => { 
+          this.listaTagliandi.push(element); //pusha ogni tagliando in lista tagliandi
         });
+      }else { //controlla se NON ci sono tagliandi
+        this.listaAuto.forEach(element => { //cicla lista di Auto
+          if (element.id == idAuto) { //controlla che l'auto ciclata corisponda a quella selezionata
+            element.hasNotTagliandi = true; //aggiunge una proprietà che è true quando l'auto NON ha tagliandi
+          }
+        })
       }
     });
   }

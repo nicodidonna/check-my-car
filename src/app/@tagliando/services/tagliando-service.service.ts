@@ -23,5 +23,4 @@ export class TagliandoServiceService {
     return this.database.collection('Auto').doc(idAuto).collection('tagliandi').doc(idTagliando).delete()
   }
   
-
 }
