@@ -100,6 +100,7 @@
   	<div *ngIf="this.listaAuto">
 	<!--TITOLO CARDS-->
 	<div *ngFor="let auto of this.listaAuto">
+		<div *ngIf="!auto.hasNotManutenzioni">
 		<h1 style="margin-bottom: 30px">Manutenzione di: {{auto.marca}} {{auto.modello}}</h1>
 		
 		<!--CARD-->
@@ -127,6 +128,7 @@
 				
 			</div>
 		</section>
-	
+		
+	</div>
 	</div>
 	</div>

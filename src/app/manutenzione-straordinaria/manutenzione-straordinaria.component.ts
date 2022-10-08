@@ -68,6 +68,12 @@ export class ManutenzioneStraordinariaComponent implements OnInit {
         manutenzioniAutoSelezionata.forEach(element => {
           this.listaManutenzioni.push(element);
         });
+      }else { //controlla se NON ci sono manutenzioni
+        this.listaAuto.forEach(element => { //cicla lista di Auto
+          if (element.id == idAuto) { //controlla che l'auto ciclata corisponda a quella selezionata
+            element.hasNotManutenzioni = true; //aggiunge una proprietà che è true quando l'auto NON ha manutenzioni
+          }
+        })
       }
     });
   }
