@@ -66,6 +66,12 @@ export class AssicurazioneBolloComponent implements OnInit {
         assicurazioniAutoSelezionata.forEach(element => {
           this.listaAssicurazioni.push(element);
         });
+      }else { //controlla se NON ci sono assicurazioni
+        this.listaAuto.forEach(element => { //cicla lista di Auto
+          if (element.id == idAuto) { //controlla che l'auto ciclata corisponda a quella selezionata
+            element.hasNotAssicurazioni = true; //aggiunge una proprietà che è true quando l'auto NON ha assicurazioni
+          }
+        })
       }
     });
   }
