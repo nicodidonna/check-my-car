@@ -25,6 +25,7 @@ export class ManutenzioneStraordinariaComponent implements OnInit {
   listaAuto = [];
   spinner : Boolean = true;
   listaManutenzioni = [];
+  idManutenzioneToDelete : number;
 
   ngOnInit(): void {
     this.getAuto()
@@ -88,6 +89,10 @@ export class ManutenzioneStraordinariaComponent implements OnInit {
 
   rimuoviManutenzione(idManutenzione, idAuto){
     this.manutenzioneService.rimuoviManutenzione(idManutenzione,idAuto).then(res => {window.location.reload()});
+  }
+
+  clickOnDelete(idManutenzione){
+    this.idManutenzioneToDelete = idManutenzione;
   }
 
 }
