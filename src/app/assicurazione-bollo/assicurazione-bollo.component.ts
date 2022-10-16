@@ -15,6 +15,7 @@ export class AssicurazioneBolloComponent implements OnInit {
   listaAuto = [];
   spinner : Boolean = true;
   listaAssicurazioni = [];
+  idAssicurazioneToDelete : number;
 
   constructor(private fb: FormBuilder, public autoService: AutoServiceService, public assicurazioneService : AssicurazioneServiceService) { 
     this.form = fb.group({
@@ -86,6 +87,10 @@ export class AssicurazioneBolloComponent implements OnInit {
 
   rimuoviAssicurazione(idAssicurazione, idAuto){
     this.assicurazioneService.rimuoviAssicurazione(idAssicurazione,idAuto).then(res => {window.location.reload()});
+  }
+
+  clickOnDelete(idAssicurazione){
+    this.idAssicurazioneToDelete = idAssicurazione;
   }
 
 }

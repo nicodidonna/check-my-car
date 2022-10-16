@@ -119,7 +119,8 @@
                         <div class="postcard__preview-txt">L'assicurazione scade il: <b>{{assicurazione.dataFineAssicurazione | date: 'dd/MM/yyyy'}}</b></div>
                         <ul class="postcard__tagbox">
                             <li class="tag__item" *ngIf="assicurazione.prezzo"><img src="assets/img/money-icon.png" style="width:20px;"> Prezzo: {{assicurazione.prezzo}}€</li>
-                            <li class="tag__item2" (click)="rimuoviAssicurazione(assicurazione.id, auto.id)"><img src="assets/img/delete-icon.png" style="width:20px;"> Cancella assicurazione</li>
+                            <li class="tag__item2" *ngIf="idAssicurazioneToDelete != assicurazione.id" (click)="clickOnDelete(assicurazione.id)"><img src="assets/img/delete-icon.png" style="width:20px;"> Cancella assicurazione</li>
+                            <li class="tag__item2" *ngIf="idAssicurazioneToDelete == assicurazione.id" (click)="rimuoviAssicurazione(assicurazione.id, auto.id)"><img src="assets/img/delete-icon.png" style="width:20px;"> Clicca per confermare</li>
                         </ul>
                     </div>
                 </article>
