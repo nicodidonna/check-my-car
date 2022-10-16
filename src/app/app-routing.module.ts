@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {path:"home", redirectTo:"",pathMatch:"full"},
@@ -11,8 +11,14 @@ const routes: Routes = [
   {path:"manutenzione-straordinaria",loadChildren:()=>import("./manutenzione-straordinaria/manutenzione-straordinaria.module").then(m=>m.ManutenzioneStraordinariaModule)}
 ];
 
+const routerOptions: ExtraOptions = {
+  useHash: false,
+  anchorScrolling: 'enabled',
+  scrollPositionRestoration: 'top'
+};
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{scrollPositionRestoration: 'top'})],
+  imports: [RouterModule.forRoot(routes,routerOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
