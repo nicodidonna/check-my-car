@@ -13,7 +13,6 @@ export class ParcoAutoComponent implements OnInit {
   form: FormGroup;
   listaAuto = [];
   spinner : boolean = true;
-  deleteConfirm : boolean = false;
   idAutoToDelete : number;
   
 
@@ -87,7 +86,7 @@ export class ParcoAutoComponent implements OnInit {
   }
 
   rimuoviAuto(id){
-    this.autoService.rimuoviAuto(id).then(res => {this.deleteConfirm = false;});
+    this.autoService.rimuoviAuto(id).then(res => {window.location.reload();});
   }
 
   getAuto(){
@@ -102,7 +101,6 @@ export class ParcoAutoComponent implements OnInit {
 
   clickOnDelete(idAuto){
     this.idAutoToDelete = idAuto;
-    this.deleteConfirm = true;
   }
 
 }

@@ -14,7 +14,6 @@ export class TagliandiComponent implements OnInit {
   listaAuto = [];
   spinner : Boolean = true;
   listaTagliandi = [];
-  deleteConfirm : boolean = false;
   idTagliandoToDelete : number;
 
 
@@ -91,12 +90,11 @@ export class TagliandiComponent implements OnInit {
   }
 
   rimuoviTagliando(idTagliando, idAuto){
-    this.tagliandoService.rimuoviTagliando(idTagliando,idAuto).then(res => {this.deleteConfirm = false;});
+    this.tagliandoService.rimuoviTagliando(idTagliando,idAuto).then(res => {window.location.reload()});
   }
 
   clickOnDelete(idTagliando){
     this.idTagliandoToDelete = idTagliando;
-    this.deleteConfirm = true;
   }
 
 }

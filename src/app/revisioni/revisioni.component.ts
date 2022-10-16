@@ -15,6 +15,7 @@ export class RevisioniComponent implements OnInit {
   listaAuto = [];
   spinner : Boolean = true;
   listaRevisioni = [];
+  idRevisioneToDelete : number;
 
   constructor(private fb: FormBuilder, public autoService : AutoServiceService, public revisioneService : RevisioneServiceService) { 
     this.form = fb.group({
@@ -87,6 +88,10 @@ export class RevisioniComponent implements OnInit {
 
   rimuoviRevisione(idRevisione, idAuto){
     this.revisioneService.rimuoviRevisione(idRevisione,idAuto).then(res => {window.location.reload()});
+  }
+
+  clickOnDelete(idRevisione){
+    this.idRevisioneToDelete = idRevisione;
   }
 
 }

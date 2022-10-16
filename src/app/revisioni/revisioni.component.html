@@ -123,7 +123,8 @@
             <ul class="postcard__tagbox">
               <li class="tag__item" *ngIf="revisione.prezzo"><img src="assets/img/money-icon.png" style="width:20px;"> Prezzo: {{revisione.prezzo}}€</li>
               <li class="tag__item" *ngIf="revisione.kilometraggio"><img src="assets/img/km-icon.png" style="width:20px;"> Kilometraggio: {{revisione.kilometraggio}} Km</li>
-              <li class="tag__item2" (click)="rimuoviRevisione(revisione.id, auto.id)"><img src="assets/img/delete-icon.png" style="width:20px;"> Cancella revisione</li>
+              <li class="tag__item2" *ngIf="idRevisioneToDelete != revisione.id" (click)="clickOnDelete(revisione.id)"><img src="assets/img/delete-icon.png" style="width:20px;"> Cancella revisione</li>
+              <li class="tag__item2" *ngIf="idRevisioneToDelete == revisione.id" (click)="rimuoviRevisione(revisione.id, auto.id)"><img src="assets/img/delete-icon.png" style="width:20px;"> Clicca per confermare</li>
             </ul>
           </div>
         </article>
