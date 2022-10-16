@@ -133,7 +133,8 @@
 							<ul class="postcard__tagbox">
 								<li class="tag__item" *ngIf="tagliando.prezzo"><img src="assets/img/money-icon.png" style="width:20px;"> Prezzo: {{tagliando.prezzo}}€</li>
 								<li class="tag__item" *ngIf="tagliando.kilometraggio"><img src="assets/img/km-icon.png" style="width:20px;"> Kilometraggio: {{tagliando.kilometraggio}} Km</li>
-								<li class="tag__item2" (click)="rimuoviTagliando(tagliando.id, auto.id)"><img src="assets/img/delete-icon.png" style="width:20px;"> Cancella tagliando</li>
+								<li class="tag__item2" *ngIf="idTagliandoToDelete != tagliando.id" (click)="clickOnDelete(tagliando.id)"><img src="assets/img/delete-icon.png" style="width:20px;"> Cancella tagliando</li>
+								<li class="tag__item2" *ngIf="deleteConfirm && idTagliandoToDelete == tagliando.id" (click)="rimuoviTagliando(tagliando.id, auto.id)"><img src="assets/img/delete-icon.png" style="width:20px;"> Clicca per confermare</li>
 							</ul>
 						</div>
 					</article>
