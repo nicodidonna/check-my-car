@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/check-my-car",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
